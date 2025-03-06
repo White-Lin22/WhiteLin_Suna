@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://k42s1lf0442l"]
+
+[ext_resource type="PackedScene" uid="uid://dpvh7bma3wxpt" path="res://assets/models/sand_tower_with_col/rock_tower_with_col._no_texture.glb" id="1_l46hp"]
+[ext_resource type="Texture2D" uid="uid://dy6ghc38t4xid" path="res://assets/models/rock_tower/Rock029_low_res-PNG_Color.png" id="2_3yfkx"]
+[ext_resource type="Texture2D" uid="uid://3s5s2uy0ryv0" path="res://assets/models/rock_tower/Rock029_low_res-PNG_NormalGL.png" id="3_fpb0r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg0jr"]
+albedo_texture = ExtResource("2_3yfkx")
+normal_enabled = true
+normal_texture = ExtResource("3_fpb0r")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[node name="rock_tower_with_col__no_texture" instance=ExtResource("1_l46hp")]
+
+[node name="rock_tower" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_bg0jr")

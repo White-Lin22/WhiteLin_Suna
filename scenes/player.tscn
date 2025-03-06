@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://mkssftuhb8s0"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ofm13"]
+[ext_resource type="Script" path="res://scripts/camera_holder.gd" id="2_r28n3"]
+[ext_resource type="Script" path="res://scripts/interact.gd" id="3_ro5my"]
+[ext_resource type="Resource" uid="uid://qibdnt6621uw" path="res://dialogue/dialogue.dialogue" id="4_33l66"]
+[ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="4_ymkhx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvqei"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("interact_label")]
+script = ExtResource("1_ofm13")
+interact_label = NodePath("CameraHolder/Camera3D/interact/interact _label")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_yvqei")
+
+[node name="CameraHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53998, 0)
+script = ExtResource("2_r28n3")
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder"]
+
+[node name="interact" type="RayCast3D" parent="CameraHolder/Camera3D" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00648987, 0)
+target_position = Vector3(0, 0, -4)
+collision_mask = 2
+collide_with_areas = true
+script = ExtResource("3_ro5my")
+dialogue_resource = ExtResource("4_33l66")
+player = NodePath("../../..")
+
+[node name="interact _label" type="Label" parent="CameraHolder/Camera3D/interact"]
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = 26.0
+offset_right = 198.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_ymkhx")
+theme_override_font_sizes/font_size = 36
+text = "[e] to talk"
+horizontal_alignment = 1
+vertical_alignment = 1

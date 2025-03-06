@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqldinv75q216"]
+
+[ext_resource type="PackedScene" uid="uid://df4fi3dxfgmi5" path="res://assets/models/barrel_col/barrel345654673_with_col.glb" id="1_ue2jf"]
+
+[node name="barrel345654673_with_col" instance=ExtResource("1_ue2jf")]
+
+[node name="barrel" parent="." index="0"]
+layers = 2

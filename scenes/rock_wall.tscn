@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn3s8j4dd3ohx"]
+
+[ext_resource type="ArrayMesh" uid="uid://bbonpt6watokd" path="res://assets/models/rock_wall/rock_wall.obj" id="1_4n27g"]
+[ext_resource type="Texture2D" uid="uid://dy6ghc38t4xid" path="res://assets/models/rock_tower/Rock029_low_res-PNG_Color.png" id="2_pfg8n"]
+[ext_resource type="Texture2D" uid="uid://3s5s2uy0ryv0" path="res://assets/models/rock_tower/Rock029_low_res-PNG_NormalGL.png" id="3_nkj3k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hd0pq"]
+albedo_texture = ExtResource("2_pfg8n")
+normal_enabled = true
+normal_texture = ExtResource("3_nkj3k")
+uv1_scale = Vector3(0.02, 0.02, 0.02)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[node name="RockWall" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82448, -0.246433, -0.546387)
+mesh = ExtResource("1_4n27g")
+surface_material_override/0 = SubResource("StandardMaterial3D_hd0pq")

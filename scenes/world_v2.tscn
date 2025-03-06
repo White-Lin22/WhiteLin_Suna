@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwxp8osadnluq"]
+
+[ext_resource type="PackedScene" uid="uid://oud4jxkkxgkg" path="res://scenes/sand_dune_with_col.tscn" id="1_oacqp"]
+[ext_resource type="PackedScene" uid="uid://k42s1lf0442l" path="res://scenes/rock_tower_with_col__with_texture.tscn" id="2_nof0b"]
+[ext_resource type="PackedScene" uid="uid://bpadnjmjait6x" path="res://scenes/rock_wall_with_col.tscn" id="3_564n3"]
+[ext_resource type="PackedScene" uid="uid://d2teqccc4pp77" path="res://scenes/actionable.tscn" id="4_53tev"]
+[ext_resource type="PackedScene" uid="uid://cqldinv75q216" path="res://scenes/barrel.tscn" id="4_i8bb0"]
+[ext_resource type="PackedScene" uid="uid://mkssftuhb8s0" path="res://scenes/player.tscn" id="5_xcnux"]
+[ext_resource type="Texture2D" uid="uid://cg484jfxvg3cp" path="res://assets/hdri/kloppenheim_07_puresky_4k.exr" id="6_3ityh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iepwk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f4g6s"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sou5t"]
+panorama = ExtResource("6_3ityh")
+
+[sub_resource type="Sky" id="Sky_b4chc"]
+sky_material = SubResource("PanoramaSkyMaterial_sou5t")
+
+[sub_resource type="Environment" id="Environment_h4jol"]
+background_mode = 2
+sky = SubResource("Sky_b4chc")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.999999, 0.00148553, -0.000891519, -0.00148468, 0.999998, 0.00094303, 0.000892935, -0.00094169, 0.999999, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("5_xcnux")]
+transform = Transform3D(1, 4.55776e-09, -1.86265e-09, -2.22587e-09, 1, -4.65661e-10, -4.07454e-10, 2.2701e-09, 1, 12.8224, 5.23717, 18.1869)
+
+[node name="simple_sand_dunes__with_colglb" parent="." instance=ExtResource("1_oacqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="barrel" type="Node" parent="."]
+
+[node name="barrel345654673_with_col" parent="barrel" instance=ExtResource("4_i8bb0")]
+transform = Transform3D(0.63527, -0.0517072, -0.770557, 0, 0.997756, -0.0669531, 0.77229, 0.0425333, 0.633844, 13.1666, 3.67241, 21.3967)
+
+[node name="Actionable" parent="barrel/barrel345654673_with_col" instance=ExtResource("4_53tev")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="barrel/barrel345654673_with_col/Actionable"]
+transform = Transform3D(2, -1.49012e-08, 8.32667e-17, 1.49012e-08, 2, -7.45058e-09, -2.77556e-17, 7.45058e-09, 2, 0, 0.8, 0.01)
+shape = SubResource("CylinderShape3D_iepwk")
+
+[node name="barrel345654673_with_col2" parent="barrel" instance=ExtResource("4_i8bb0")]
+transform = Transform3D(0.99923, 0.0384633, 0.00769202, -0.0392249, 0.979829, 0.195949, 0, -0.1961, 0.980584, 10.256, 4.70689, 21.2972)
+
+[node name="Actionable" parent="barrel/barrel345654673_with_col2" instance=ExtResource("4_53tev")]
+dialogue_start = "npc2"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="barrel/barrel345654673_with_col2/Actionable"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.8, 0)
+shape = SubResource("CylinderShape3D_f4g6s")
+
+[node name="rock_tower" type="Node" parent="."]
+
+[node name="rock_tower_with_col__no_texture" parent="rock_tower" instance=ExtResource("2_nof0b")]
+transform = Transform3D(0.99183, 0.127521, 0.00329017, -0.127005, 0.989572, -0.0679531, -0.0119213, 0.0669801, 0.997683, 6, 4.68573, 9)
+
+[node name="rock_tower_with_col__no_texture2" parent="rock_tower" instance=ExtResource("2_nof0b")]
+transform = Transform3D(1.57506, -0.0994655, 0.488617, 0.092743, 2.40988, -0.0501071, -0.549445, 0.121641, 1.39223, 5.77888, 4.23306, 13.8507)
+
+[node name="rock_tower_with_col__no_texture3" parent="rock_tower" instance=ExtResource("2_nof0b")]
+transform = Transform3D(1.52915, -0.0329605, 0.602759, 0.0369262, 0.788388, 0.080487, -0.672043, -0.0316788, 1.37593, 11.2193, 3.97593, 7.26972)
+
+[node name="rock_tower_with_col__no_texture4" parent="rock_tower" instance=ExtResource("2_nof0b")]
+transform = Transform3D(6.25822, -0.084921, 3.32352, -0.419475, 1.10482, 1.46999, -3.86839, -0.257187, 5.21734, 21.6628, 2.40492, 23.4754)
+
+[node name="rock_wall2" type="Node" parent="."]
+
+[node name="rock_wall" parent="rock_wall2" instance=ExtResource("3_564n3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4145, 2.03146, 12.9969)
+
+[node name="rock_wall4" parent="rock_wall2" instance=ExtResource("3_564n3")]
+transform = Transform3D(0.802182, 0, -0.597079, 0, 0.452614, 0, 0.597079, 0, 0.802182, 60.7424, 18.8153, -15.7274)
+
+[node name="rock_wall7" parent="rock_wall2" instance=ExtResource("3_564n3")]
+transform = Transform3D(0.466236, 0, -0.174042, -0.343485, 0.0251048, -0.231439, 0.0494664, 0.174323, 0.0333303, 33.9958, 13.1454, 25.3415)
+
+[node name="rock_wall5" parent="rock_wall2" instance=ExtResource("3_564n3")]
+transform = Transform3D(-0.242114, -0.336567, -0.62324, 0.965531, -0.11221, -0.0792886, -0.095552, -0.281053, 0.778001, 65.6558, 15.4623, 1.75746)
+
+[node name="rock_wall6" parent="rock_wall2" instance=ExtResource("3_564n3")]
+transform = Transform3D(0.320736, -0.349004, -0.550051, 0.917236, 0.180004, -0.0226703, 0.236236, -0.225065, 0.834823, 48.9399, 9.93573, -15.6514)
+
+[node name="rock_wall2" parent="rock_wall2" instance=ExtResource("3_564n3")]
+transform = Transform3D(2.0081, -0.47304, -0.409169, 0.487926, 1.94684, -0.0994194, 1.0539, 0, 0.825657, -35.5012, -2.70989, -50.5247)
+
+[node name="rock_wall3" parent="rock_wall2" instance=ExtResource("3_564n3")]
+transform = Transform3D(6.26902, -0.711006, -0.791923, 3.31638, 2.65998, 0.191599, 4.19674, -1.0399, 1.03155, 94.2688, -2.70989, -50.5247)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h4jol")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.978788, 0.0590917, -0.196167, 0.0923893, 0.727305, 0.680069, 0.18286, -0.683767, 0.706417, -0.0267244, 18, 0.0169743)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shit_crosshair" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -11.5
+offset_right = 5.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "o
+"

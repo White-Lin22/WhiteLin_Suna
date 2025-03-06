@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://oud4jxkkxgkg"]
+
+[ext_resource type="PackedScene" uid="uid://c4lx7g6svjbg1" path="res://assets/models/sand_dunes_with_col/simple_sand_dunes._with_colglb.glb" id="1_ae3sb"]
+
+[node name="simple_sand_dunes__with_colglb" instance=ExtResource("1_ae3sb")]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhjra0da8av8k"]
+
+[ext_resource type="ArrayMesh" uid="uid://bbsmkvr4jl773" path="res://assets/models/rock_tower/rock_tower.obj" id="1_g3iu8"]
+[ext_resource type="Texture2D" uid="uid://dy6ghc38t4xid" path="res://assets/models/rock_tower/Rock029_low_res-PNG_Color.png" id="2_xgekq"]
+[ext_resource type="Texture2D" uid="uid://3s5s2uy0ryv0" path="res://assets/models/rock_tower/Rock029_low_res-PNG_NormalGL.png" id="3_p0axj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t143y"]
+albedo_texture = ExtResource("2_xgekq")
+normal_enabled = true
+normal_texture = ExtResource("3_p0axj")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[node name="SandTower" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.00826, 0, 0, 0, 1.00826, 0, 0, 0, 1.00826, -0.0216832, -0.0104096, 0.0401008)
+mesh = ExtResource("1_g3iu8")
+surface_material_override/0 = SubResource("StandardMaterial3D_t143y")

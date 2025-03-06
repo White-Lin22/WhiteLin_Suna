@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh3e315r7wfvs"]
+
+[ext_resource type="PackedScene" uid="uid://vtm873qpa8y1" path="res://assets/models/sand_tower_with_col/rock_tower_with_col.glb" id="1_vwddj"]
+
+[node name="rock_tower_with_col" instance=ExtResource("1_vwddj")]

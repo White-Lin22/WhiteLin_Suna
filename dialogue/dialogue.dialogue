@@ -1,0 +1,45 @@
+~ start
+if npc1_talked_to == "":
+	Old Man: Hey you.
+	Old Man: Yes you.
+	Old Man: I see your batteries have started kicking again after all these years.
+	Old Man: You probably don't rememeber me, but you were purpose-built to deliver important objects to important people.
+	Old Man: I want you to have this.
+	set gem_status = "has"
+	Old Man: It's an jewel that was formed before this land was desert. One where life flourished under the warmth of the mightly Gods.
+	Old Man: It's all gone now though.
+	Old Man: And barrel-folk like me are the only ones left.
+	Old Man: See to the east, over at rock towers.
+	Old Man: You will find another of my people willing to help you.
+	Old Man: I hope this will help you find purpose within these dunes.
+	set npc1_talked_to = "yes"
+else:
+	Old Man: .
+
+=> END
+
+~ npc2 
+
+if npc2_talked_to == "":
+	if gem_status == "has":
+		Drifter: ...
+		Drifter: So the Old Man brought you here.
+		Drifter: I apologise for my insolence
+		Drifter: If you want to continue your journey, then you must take this
+		Drifter: It's the skull of someone important.
+		Drifter: Their name is not known by anyone living, and even in life their existence was inconsequential.
+		Drifter: But they are the remains of a time dearly missed.
+		Drifter: And now you have it.
+		Drifter: Seek the north east to find the Bearer of Skulls.
+		Drifter: Thank you and goodbye forever.
+		set npc2_talked_to = "yes"
+	else:
+		Drifter: What are you looking at.
+		Drifter: I haven't seen your kind in millennia.
+		Drifter: I hoped it would stay that way.
+		Drifter: Your people left us when we needed it the most.
+		Drifter: If you have nothing to say then leave me to my enternal tomb.
+else:
+	Drifter: .
+
+=> END

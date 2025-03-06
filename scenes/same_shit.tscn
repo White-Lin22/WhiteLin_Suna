@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c00fqa3n5dsgw"]
+
+[ext_resource type="PackedScene" uid="uid://bshq4mdy8pnqm" path="res://assets/models/sand_dune_half_simple/sand_dune_please_work2.glb" id="1_vw608"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="sand_dune_please_work2" parent="." instance=ExtResource("1_vw608")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
