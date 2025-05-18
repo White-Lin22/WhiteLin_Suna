@@ -124,3 +124,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "o
 "
+
+[node name="rock_wall" parent="." instance=ExtResource("3_564n3")]
+transform = Transform3D(0.312127, -0.000104963, 0.000345656, 0.000463672, 0.0706972, -0.000364542, -0.000278273, 6.66687e-05, 0.387108, 8.7815, 9.85186, 35.6923)

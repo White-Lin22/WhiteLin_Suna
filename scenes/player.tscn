@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://mkssftuhb8s0"]
+[gd_scene load_steps=10 format=3 uid="uid://mkssftuhb8s0"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ofm13"]
 [ext_resource type="Script" path="res://scripts/camera_holder.gd" id="2_r28n3"]
@@ -7,6 +7,12 @@
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="4_ymkhx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvqei"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_757pa"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oh0y7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_by1q5"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("interact_label")]
 script = ExtResource("1_ofm13")
@@ -49,3 +55,29 @@ theme_override_font_sizes/font_size = 36
 text = "[e] to talk"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WallCheckRays" type="Node3D" parent="."]
+
+[node name="wallcheck" type="RayCast3D" parent="WallCheckRays"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.497138, 0)
+collision_mask = 4
+
+[node name="StillOnWall" type="RayCast3D" parent="WallCheckRays"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.42552, 0)
+collision_mask = 4
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="loudState" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.0106492, 1, 0.00614738)
+shape = SubResource("SphereShape3D_757pa")
+
+[node name="quietState" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1, 0)
+shape = SubResource("SphereShape3D_oh0y7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00717688, 1, 0.00107145)
+mesh = SubResource("CapsuleMesh_by1q5")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

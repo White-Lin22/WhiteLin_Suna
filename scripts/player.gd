@@ -1,11 +1,21 @@
 extends CharacterBody3D
 
 var speed = 5.0
+var climb_speed = 2.0
+var vault_velocity = 5.0
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var gravity_on = true
+var climbing = false
 var in_conversation = false
+
 @export var interact_label: Label
+@onready var wallcheck = $WallCheckRays/wallcheck
+@onready var stillonwall = $WallCheckRays/StillOnWall
+@onready var loudstate = $Area3D/loudState
+@onready var quietstate = $Area3D/quietState
 
 
 func _ready() -> void:
@@ -30,7 +40,7 @@ func _input(event):
 		get_tree().quit()
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and gravity_on:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
@@ -40,9 +50,34 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_pressed("sprint"):
-		speed = 7
+		speed = 2
+		loudstate.disabled = true
+		quietstate.disabled = false
 	else:
 		speed = 5
+		loudstate.disabled = false
+		quietstate.disabled = true
+		
+	if wallcheck.is_colliding():
+		if stillonwall.is_colliding():
+			if Input.is_action_pressed("climb"):
+				velocity.y = JUMP_VELOCITY
+				climbing = true
+				print("climbing state")
+			else:
+				climbing = false
+		else:
+			velocity.y = JUMP_VELOCITY
+			print("top of wall")
+			climbing = true
+	else:
+		climbing = false
+				
+				
+	if climbing:
+		gravity_on = false
+	else: 
+		gravity_on = true
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -64,7 +99,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		velocity.z = 0
 	move_and_slide()
-	
+
+func climbing_wall():
+	climbing = true
 	
 func in_conversation_rn():
 	in_conversation = true
@@ -72,3 +109,8 @@ func in_conversation_rn():
 func not_in_conversation_rn():
 	in_conversation = false
 	
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	print("overlap: ", area)
+	print(self.global_transform.origin)
