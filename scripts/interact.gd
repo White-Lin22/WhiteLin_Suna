@@ -13,6 +13,7 @@ func _ready() -> void:
 	DialogueManager.connect("dialogue_ended", Callable(self, "connected_signal"))
 
 func _process(delta: float) -> void:
+	# if the player is looking at something interactable and is in range
 	if is_colliding() and interacting == false:
 		if interact_visible:
 			$"interact _label".visible = true

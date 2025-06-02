@@ -19,17 +19,15 @@ script = ExtResource("1_ofm13")
 interact_label = NodePath("CameraHolder/Camera3D/interact/interact _label")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_yvqei")
 
 [node name="CameraHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53998, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_r28n3")
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
 
 [node name="interact" type="RayCast3D" parent="CameraHolder/Camera3D" node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00648987, 0)
 target_position = Vector3(0, 0, -4)
 collision_mask = 2
 collide_with_areas = true
@@ -59,25 +57,24 @@ vertical_alignment = 1
 [node name="WallCheckRays" type="Node3D" parent="."]
 
 [node name="wallcheck" type="RayCast3D" parent="WallCheckRays"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.497138, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, 0)
 collision_mask = 4
 
 [node name="StillOnWall" type="RayCast3D" parent="WallCheckRays"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.42552, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0)
 collision_mask = 4
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="loudState" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.0106492, 1, 0.00614738)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("SphereShape3D_757pa")
 
 [node name="quietState" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_oh0y7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00717688, 1, 0.00107145)
 mesh = SubResource("CapsuleMesh_by1q5")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

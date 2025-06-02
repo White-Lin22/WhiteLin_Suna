@@ -16,6 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 9, 0, 2.5, 0)
 mesh = SubResource("BoxMesh_v1iut")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dghdq")
