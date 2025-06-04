@@ -1,6 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://be6i21v2g8n06"]
+[gd_scene load_steps=12 format=3 uid="uid://be6i21v2g8n06"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_q4705"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="2_wpfis"]
+[ext_resource type="Script" path="res://scenes/idle.gd" id="3_63h86"]
+[ext_resource type="Script" path="res://scenes/searching.gd" id="4_cowwq"]
+[ext_resource type="Script" path="res://scenes/chasing.gd" id="5_7qjmv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5c107"]
 
@@ -57,5 +61,22 @@ avoidance_enabled = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
 text = "[Idle]"
 font_size = 128
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("enemy", "current_state")]
+script = ExtResource("2_wpfis")
+enemy = NodePath("..")
+current_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("search_state")]
+script = ExtResource("3_63h86")
+search_state = NodePath("../searching")
+
+[node name="searching" type="Node" parent="state_machine" node_paths=PackedStringArray("chasing_state")]
+script = ExtResource("4_cowwq")
+chasing_state = NodePath("../chasing")
+
+[node name="chasing" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("5_7qjmv")
+idle_state = NodePath("../idle")
 
 [connection signal="body_entered" from="SightArea" to="." method="_on_sight_area_body_entered"]

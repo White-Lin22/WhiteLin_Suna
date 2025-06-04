@@ -1,18 +1,19 @@
 class_name state extends Node
 
-signal finished(next_state_path: String, data: Dictionary)
+var enemy: CharacterBody3D
+var next_state : state
 
-func Enter():
+func on_enter():
 	pass
 	
-func Exit():
+func on_exit():
 	pass
 	
-func Physics_update(_delta: float):
+func physics_update(_delta: float):
 	pass
 	
-func Update(_delta: float):
+func update(_delta: float):
 	pass
 	
-func Handle_input(_input: InputEvent):
+func handle_input(_input: InputEvent):
 	pass

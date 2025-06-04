@@ -16,8 +16,8 @@ func _physics_process(delta: float) -> void:
 	if start_rotating:
 		searching(delta)
 	enemy_sight()
-	
-	label3d.look_at(-player.global_transform.origin, Vector3.UP)
+
+	#label3d.look_at(-player.global_transform.origin, Vector3.UP)
 func enemy_sight():
 	# if the enemy sees the player
 	if sight_raycast.is_colliding():
