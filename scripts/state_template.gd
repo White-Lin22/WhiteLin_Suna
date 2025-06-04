@@ -9,10 +9,10 @@ func on_enter():
 func on_exit():
 	pass
 	
-func physics_update(_delta: float):
+func physics_update(delta):
 	pass
 	
-func update(_delta: float):
+func update(delta):
 	pass
 	
 func handle_input(_input: InputEvent):

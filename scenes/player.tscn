@@ -14,7 +14,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_by1q5"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("interact_label")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("interact_label") groups=["Player"]]
 script = ExtResource("1_ofm13")
 interact_label = NodePath("CameraHolder/Camera3D/interact/interact _label")
 
