@@ -22,9 +22,11 @@ func _physics_process(delta):
 	
 	if(current_state.next_state != null):
 		switch_states(current_state.next_state)
-	#print(current_state)	
+	print(current_state)	
 	current_state.physics_update(delta)
 
+func _unhandled_input(_input: InputEvent) -> void:
+	current_state.handle_input(_input)
 
 func switch_states(new_state : state):
 	if(current_state != null):

@@ -5,10 +5,11 @@ var start_rotating = false
 var rotation_amount = 0.0
 
 @export var player: CharacterBody3D
+@export var label3d: Label3D 
 
 @onready var sight_raycast: RayCast3D = $Node3D/RayCast3D
 @onready var nav_agent = $NavigationAgent3D
-@onready var label3d: Label3D = $Node3D2/Label3D
+
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -17,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	#	searching(delta)
 	#enemy_sight()
 
-	#label3d.look_at(-player.global_transform.origin, Vector3.UP)
+	label3d.look_at(-player.global_transform.origin, Vector3.UP)
 #func enemy_sight():
 	# if the enemy sees the player
 #	if sight_raycast.is_colliding():
@@ -73,3 +74,6 @@ func _physics_process(delta: float) -> void:
 #func _on_sight_area_body_entered(body: Node3D) -> void:
 #	if body == player:
 #		start_rotating_func()
+func target_position(target):
+	# sets the target for the enemy to be the player(collider)
+	nav_agent.target_position = target

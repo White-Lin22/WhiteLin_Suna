@@ -4,24 +4,23 @@ class_name idle
 
 var player : CharacterBody3D
 
+
 @export var search_state : state
 @export var state_label : Label3D
+var player_got = false
 
 func on_enter()-> void:
-	print("aedthaejeatjeatjeaJ")
+	print("entered idle")
 	player = get_tree().get_first_node_in_group("Player")
 	state_label.text ="[idle]"
 	#print("entered idle state")
 
-func update(delta)-> void:
-	player = get_tree().get_first_node_in_group("Player")
-	state_label.text ="[idle]"
-	#print("entered idle state")
-	
 func _physics_process(delta: float) -> void:
-	player = get_tree().get_first_node_in_group("Player")
-	state_label.text ="[idle]"
-	
+	while player_got == false:
+		player = get_tree().get_first_node_in_group("Player")
+		player_got = true
+		print("player got: ", player_got)
+
 
 func handle_input(_input: InputEvent)-> void:
 	pass 

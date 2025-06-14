@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://be6i21v2g8n06"]
+[gd_scene load_steps=12 format=3 uid="uid://be6i21v2g8n06"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_q4705"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="2_wpfis"]
 [ext_resource type="Script" path="res://scripts/idle.gd" id="3_63h86"]
 [ext_resource type="Script" path="res://scripts/searching.gd" id="4_cowwq"]
 [ext_resource type="Script" path="res://scripts/chasing.gd" id="5_7qjmv"]
-[ext_resource type="PackedScene" uid="uid://pxguikj2w23w" path="res://scenes/kill_zone.tscn" id="6_5orj6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5c107"]
 
@@ -21,11 +20,8 @@ material = SubResource("StandardMaterial3D_ukkos")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8chfc"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d43n5"]
-
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("label3d")]
+[node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_q4705")
-label3d = NodePath("state_label/Label3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_5c107")
@@ -59,9 +55,9 @@ shape = SubResource("SphereShape3D_8chfc")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 
-[node name="state_label" type="Node3D" parent="."]
+[node name="Node3D2" type="Node3D" parent="."]
 
-[node name="Label3D" type="Label3D" parent="state_label"]
+[node name="Label3D" type="Label3D" parent="Node3D2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
 text = "[Idle]"
 font_size = 128
@@ -74,27 +70,22 @@ current_state = NodePath("idle")
 [node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("search_state", "state_label")]
 script = ExtResource("3_63h86")
 search_state = NodePath("../searching")
-state_label = NodePath("../../state_label/Label3D")
+state_label = NodePath("../../Node3D2/Label3D")
 
-[node name="searching" type="Node" parent="state_machine" node_paths=PackedStringArray("chasing_state", "state_label", "sight_raycast", "idle_state")]
+[node name="searching" type="Node" parent="state_machine" node_paths=PackedStringArray("chasing_state", "state_label", "sight_raycast", "idle_state", "enemy")]
 script = ExtResource("4_cowwq")
 chasing_state = NodePath("../chasing")
-state_label = NodePath("../../state_label/Label3D")
+state_label = NodePath("../../Node3D2/Label3D")
 sight_raycast = NodePath("../../Node3D/RayCast3D")
 idle_state = NodePath("../idle")
+enemy = NodePath("../..")
 
-[node name="chasing" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "searching_state", "state_label", "nav_agent", "sight_raycast")]
+[node name="chasing" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "searching_state", "state_label", "nav_agent", "enemy")]
 script = ExtResource("5_7qjmv")
 idle_state = NodePath("../idle")
 searching_state = NodePath("../searching")
-state_label = NodePath("../../state_label/Label3D")
+state_label = NodePath("../../Node3D2/Label3D")
 nav_agent = NodePath("../../NavigationAgent3D")
-sight_raycast = NodePath("../../Node3D/RayCast3D")
-
-[node name="kill_zone" parent="." instance=ExtResource("6_5orj6")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="kill_zone"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("BoxShape3D_d43n5")
+enemy = NodePath("../..")
 
 [connection signal="body_entered" from="SightArea" to="state_machine/idle" method="_on_sight_area_body_entered"]

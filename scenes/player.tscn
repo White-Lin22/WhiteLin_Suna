@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://mkssftuhb8s0"]
+[gd_scene load_steps=9 format=3 uid="uid://mkssftuhb8s0"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ofm13"]
 [ext_resource type="Script" path="res://scripts/camera_holder.gd" id="2_r28n3"]
 [ext_resource type="Script" path="res://scripts/interact.gd" id="3_ro5my"]
-[ext_resource type="Resource" uid="uid://qibdnt6621uw" path="res://dialogue/dialogue.dialogue" id="4_33l66"]
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="4_ymkhx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvqei"]
@@ -27,15 +26,16 @@ script = ExtResource("2_r28n3")
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
 
-[node name="interact" type="RayCast3D" parent="CameraHolder/Camera3D" node_paths=PackedStringArray("player")]
+[node name="interact" type="RayCast3D" parent="CameraHolder/Camera3D" node_paths=PackedStringArray("player", "interact_label")]
 target_position = Vector3(0, 0, -4)
 collision_mask = 2
 collide_with_areas = true
 script = ExtResource("3_ro5my")
-dialogue_resource = ExtResource("4_33l66")
 player = NodePath("../../..")
+interact_label = NodePath("interact _label")
 
 [node name="interact _label" type="Label" parent="CameraHolder/Camera3D/interact"]
+visible = false
 z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
