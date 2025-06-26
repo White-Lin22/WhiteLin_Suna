@@ -12,6 +12,7 @@ var climbing = false
 var in_conversation = false
 
 @export var interact_label: Label
+@export var walkingstate: CollisionShape3D
 @onready var wallcheck = $WallCheckRays/wallcheck
 @onready var stillonwall = $WallCheckRays/StillOnWall
 @onready var loudstate = $Area3D/loudState
@@ -44,19 +45,26 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if in_conversation == false:
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			print("dsfg")
-			velocity.y = JUMP_VELOCITY
+	#if in_conversation == false:
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_pressed("sprint"):
+		speed = 8
+		loudstate.disabled = false
+		quietstate.disabled = true
+		walkingstate.disabled = true
+	elif Input.is_action_pressed("sneak"):
 		speed = 2
 		loudstate.disabled = true
 		quietstate.disabled = false
+		walkingstate.disabled = true
+		
 	else:
 		speed = 5
-		loudstate.disabled = false
+		loudstate.disabled = true
 		quietstate.disabled = true
+		walkingstate.disabled = false
 		
 	if wallcheck.is_colliding():
 		if stillonwall.is_colliding():
@@ -84,20 +92,20 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if in_conversation == false:
-		if is_on_floor():
-			if direction:
-				velocity.x = direction.x * speed
-				velocity.z = direction.z * speed
-			else:
-				velocity.x = lerp(velocity.x, direction.x * speed, delta * 7)
-				velocity.z = lerp(velocity.z, direction.z * speed, delta * 7)	
+	#if in_conversation == false:
+	if is_on_floor():
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.5)	
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7)	
 	else:
-		velocity.x = 0
-		velocity.z = 0
+		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
+		velocity.z = lerp(velocity.z, direction.z * speed, delta * 1.5)	
+	#else:
+	#	velocity.x = 0
+	#	velocity.z = 0
 	move_and_slide()
 
 func climbing_wall():
@@ -112,5 +120,4 @@ func not_in_conversation_rn():
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	print("overlap: ", area)
-	print(self.global_transform.origin)
+	pass

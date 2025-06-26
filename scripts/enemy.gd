@@ -3,9 +3,11 @@ extends CharacterBody3D
 var speed = 4
 var start_rotating = false
 var rotation_amount = 0.0
+var hearing_status = 0
 
 @export var player: CharacterBody3D
 @export var label3d: Label3D 
+@export var hearing_area: Area3D
 
 @onready var sight_raycast: RayCast3D = $Node3D/RayCast3D
 @onready var nav_agent = $NavigationAgent3D
@@ -17,7 +19,8 @@ func _physics_process(delta: float) -> void:
 	#if start_rotating:
 	#	searching(delta)
 	#enemy_sight()
-
+	
+	
 	label3d.look_at(-player.global_transform.origin, Vector3.UP)
 #func enemy_sight():
 	# if the enemy sees the player
@@ -77,3 +80,8 @@ func _physics_process(delta: float) -> void:
 func target_position(target):
 	# sets the target for the enemy to be the player(collider)
 	nav_agent.target_position = target
+
+
+func _on_hearing_area_entered(area: Area3D) -> void:
+	print("overlap")
+	

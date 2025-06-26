@@ -23,9 +23,10 @@ material = SubResource("StandardMaterial3D_ukkos")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d43n5"]
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("label3d")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("label3d", "hearing_area")]
 script = ExtResource("1_q4705")
 label3d = NodePath("state_label/Label3D")
+hearing_area = NodePath("Hearing")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_5c107")
@@ -98,3 +99,4 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_d43n5")
 
 [connection signal="body_entered" from="SightArea" to="state_machine/idle" method="_on_sight_area_body_entered"]
+[connection signal="area_entered" from="Hearing" to="." method="_on_hearing_area_entered"]

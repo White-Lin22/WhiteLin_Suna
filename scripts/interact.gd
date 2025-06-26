@@ -6,6 +6,7 @@ extends RayCast3D
 #@export var dialogue_start: String = "start"
 @export var player = CharacterBody3D
 @export var interact_label : Label
+@export var collection_msg : Label
 
 var interacting = false
 var interact_visible = true
@@ -27,6 +28,7 @@ func _process(delta: float) -> void:
 			actionables.action()
 			interacting = true
 			interact_label.visible = false
+			collection_msg_timer()
 			print('drtgh')
 			print(interacting)
 		else: 
@@ -34,6 +36,11 @@ func _process(delta: float) -> void:
 	else:
 		interact_label.visible = false
 		
+func collection_msg_timer():
+	collection_msg.visible = true
+	await get_tree().create_timer(2).timeout
+	collection_msg.visible = false
+
 #func connected_signal(dialogue):
 #	interact_visible = true
 #	print(dialogue)

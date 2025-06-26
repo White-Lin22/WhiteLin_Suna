@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://mkssftuhb8s0"]
+[gd_scene load_steps=11 format=3 uid="uid://mkssftuhb8s0"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ofm13"]
 [ext_resource type="Script" path="res://scripts/camera_holder.gd" id="2_r28n3"]
 [ext_resource type="Script" path="res://scripts/interact.gd" id="3_ro5my"]
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="4_ymkhx"]
+[ext_resource type="FontFile" uid="uid://cwgntu2vlh2m4" path="res://assets/font/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="5_88vfk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvqei"]
 
@@ -11,11 +12,14 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oh0y7"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_pn40d"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_by1q5"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("interact_label") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("interact_label", "walkingstate") groups=["Player"]]
 script = ExtResource("1_ofm13")
 interact_label = NodePath("CameraHolder/Camera3D/interact/interact _label")
+walkingstate = NodePath("Area3D/walkingState")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_yvqei")
@@ -26,13 +30,14 @@ script = ExtResource("2_r28n3")
 
 [node name="Camera3D" type="Camera3D" parent="CameraHolder"]
 
-[node name="interact" type="RayCast3D" parent="CameraHolder/Camera3D" node_paths=PackedStringArray("player", "interact_label")]
+[node name="interact" type="RayCast3D" parent="CameraHolder/Camera3D" node_paths=PackedStringArray("player", "interact_label", "collection_msg")]
 target_position = Vector3(0, 0, -4)
 collision_mask = 2
 collide_with_areas = true
 script = ExtResource("3_ro5my")
 player = NodePath("../../..")
 interact_label = NodePath("interact _label")
+collection_msg = NodePath("collection_label")
 
 [node name="interact _label" type="Label" parent="CameraHolder/Camera3D/interact"]
 visible = false
@@ -54,6 +59,24 @@ text = "[e] to talk"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="collection_label" type="Label" parent="CameraHolder/Camera3D/interact"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -11.5
+offset_right = 28.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_88vfk")
+text = "Obtained AI Core"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="WallCheckRays" type="Node3D" parent="."]
 
 [node name="wallcheck" type="RayCast3D" parent="WallCheckRays"]
@@ -71,8 +94,12 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("SphereShape3D_757pa")
 
 [node name="quietState" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_oh0y7")
+
+[node name="walkingState" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+shape = SubResource("SphereShape3D_pn40d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_by1q5")

@@ -73,5 +73,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4656, 0, 6.57797)
 
 [node name="Actionable" parent="barrel345654673_with_col" instance=ExtResource("7_go4g7")]
 
-[node name="w" type="CollisionShape3D" parent="barrel345654673_with_col/Actionable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="barrel345654673_with_col/Actionable"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.08123, 0)
 shape = SubResource("CylinderShape3D_dteeq")
