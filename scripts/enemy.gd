@@ -3,7 +3,7 @@ extends CharacterBody3D
 var speed = 4
 var start_rotating = false
 var rotation_amount = 0.0
-var hearing_status = 0
+
 
 @export var player: CharacterBody3D
 @export var label3d: Label3D 
@@ -80,8 +80,3 @@ func _physics_process(delta: float) -> void:
 func target_position(target):
 	# sets the target for the enemy to be the player(collider)
 	nav_agent.target_position = target
-
-
-func _on_hearing_area_entered(area: Area3D) -> void:
-	print("overlap")
-	

@@ -52,6 +52,8 @@ shape = SubResource("BoxShape3D_low18")
 
 [node name="Hearing" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031601, 0, -0.00729752)
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hearing"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.00839329, 0, 0.00677156)
@@ -99,4 +101,4 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_d43n5")
 
 [connection signal="body_entered" from="SightArea" to="state_machine/idle" method="_on_sight_area_body_entered"]
-[connection signal="area_entered" from="Hearing" to="." method="_on_hearing_area_entered"]
+[connection signal="area_entered" from="Hearing" to="state_machine/idle" method="_on_hearing_area_entered"]

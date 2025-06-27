@@ -6,6 +6,7 @@ class_name state_machine extends Node
 
 var states : Array[state]
 
+
 func _ready():
 	for child in get_children():
 		if(child is state):
