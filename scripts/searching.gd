@@ -3,11 +3,14 @@ extends state
 
 class_name searching
 
-@export var chasing_state : state
-@export var state_label : Label3D
-@export var sight_raycast : RayCast3D
 @export var idle_state : state
 @export var patrol_state : state
+@export var chasing_state : state
+
+@export var state_label : Label3D
+@export var sight_raycast : RayCast3D
+@export var sight_area : Area3D
+
 
 var player : CharacterBody3D
 var start_rotating = false
@@ -22,17 +25,7 @@ func on_enter():
 	
 func physics_update(delta):
 	spinning(delta)
-	sight()
 	
-func sight():
-	
-	# counts the amount of rotation for restricting the amount of spins
-	if sight_raycast.is_colliding():
-#		# gets the collider of the raycast
-		var collider = sight_raycast.get_collider()
-#		# if the collider detects the player than it changes into the chase state, if not prints the collider
-		if collider == player:
-			go_to_chase_state()
 			
 # spins enemy twice	
 func spinning(delta):
@@ -61,3 +54,18 @@ func go_to_idle_state():
 	
 func go_to_patrol_state():
 	next_state = patrol_state
+
+
+func _on_sight_timer_timeout() -> void:
+	var overlaps = sight_area.get_overlapping_bodies()
+	if overlaps.size() > 0:
+		for overlap in overlaps:
+			if overlap == player:
+				sight_raycast.look_at(player.global_transform.origin, Vector3.UP)
+				sight_raycast.force_raycast_update()
+				if sight_raycast.is_colliding():
+					var collider = sight_raycast.get_collider()
+					if collider == player:
+						go_to_chase_state()
+					else:
+						print("player not detected kdfkdfkdf")

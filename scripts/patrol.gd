@@ -12,7 +12,6 @@ var speed = 200
 @export var hearing_label : Label3D
 @export var nav_agent : NavigationAgent3D
 @export var sight_area : Area3D
-@export var sight_timer : Timer
 @export var sight_raycast : RayCast3D
 
 var player_got = false
@@ -44,7 +43,7 @@ func physics_update(delta):
 func go_to_search_state():
 	next_state = search_state
 
-func go_to_chasing_state():
+func go_to_chase_state():
 	next_state = chasing_state
 
 func hearing_meter():
@@ -107,7 +106,7 @@ func _on_sight_timer_timeout() -> void:
 				if sight_raycast.is_colliding():
 					var collider = sight_raycast.get_collider()
 					if collider == player:
-						go_to_chasing_state()
+						go_to_chase_state()
 					else:
 						print("player not detected kdfkdfkdf")
 				
