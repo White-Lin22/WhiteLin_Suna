@@ -20,11 +20,17 @@ func _ready():
 			push_warning("Child " + child.name + " is not a State for CharacterStateMachine")
 
 func _physics_process(delta):
-	
 	if(current_state.next_state != null):
 		switch_states(current_state.next_state)
 	#print(current_state)	
 	current_state.physics_update(delta)
+	
+func _process(delta):
+	
+	if(current_state.next_state != null):
+		switch_states(current_state.next_state)
+	#print(current_state)	
+	current_state.update(delta)
 
 func _unhandled_input(_input: InputEvent) -> void:
 	current_state.handle_input(_input)

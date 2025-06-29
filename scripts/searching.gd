@@ -7,7 +7,7 @@ class_name searching
 @export var state_label : Label3D
 @export var sight_raycast : RayCast3D
 @export var idle_state : state
-
+@export var patrol_state : state
 
 var player : CharacterBody3D
 var start_rotating = false
@@ -44,7 +44,7 @@ func spinning(delta):
 	else:
 		# resets the both the counter for rotation and the boolean for starting rotations
 		rotation_amount = 0
-		go_to_idle_state()
+		go_to_patrol_state()
 		
 		
 		
@@ -58,3 +58,6 @@ func go_to_chase_state():
 	
 func go_to_idle_state():
 	next_state = idle_state
+	
+func go_to_patrol_state():
+	next_state = patrol_state

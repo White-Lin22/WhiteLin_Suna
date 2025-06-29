@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://be6i21v2g8n06"]
+[gd_scene load_steps=15 format=3 uid="uid://be6i21v2g8n06"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_q4705"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="2_wpfis"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/searching.gd" id="4_cowwq"]
 [ext_resource type="Script" path="res://scripts/chasing.gd" id="5_7qjmv"]
 [ext_resource type="PackedScene" uid="uid://pxguikj2w23w" path="res://scenes/kill_zone.tscn" id="6_5orj6"]
+[ext_resource type="Script" path="res://scripts/patrol.gd" id="6_empmb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5c107"]
 
@@ -17,16 +18,18 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_ex4bx"]
 material = SubResource("StandardMaterial3D_ukkos")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_low18"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w3vmi"]
+points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8chfc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d43n5"]
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("label3d", "hearing_area")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("state_label", "hearing_area", "hearing_label")]
 script = ExtResource("1_q4705")
-label3d = NodePath("state_label/Label3D")
+state_label = NodePath("state_label_parent/state_label")
 hearing_area = NodePath("Hearing")
+hearing_label = NodePath("hearing_label_parent/hearing_label")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_5c107")
@@ -46,9 +49,9 @@ target_position = Vector3(0, 1, 0)
 
 [node name="SightArea" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SightArea"]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, -3)
-shape = SubResource("BoxShape3D_low18")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SightArea"]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0.5, -5)
+shape = SubResource("ConvexPolygonShape3D_w3vmi")
 
 [node name="Hearing" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031601, 0, -0.00729752)
@@ -62,37 +65,50 @@ shape = SubResource("SphereShape3D_8chfc")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 
-[node name="state_label" type="Node3D" parent="."]
+[node name="state_label_parent" type="Node3D" parent="."]
 
-[node name="Label3D" type="Label3D" parent="state_label"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
+[node name="state_label" type="Label3D" parent="state_label_parent"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.5, 0)
 text = "[Idle]"
 font_size = 128
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("enemy", "current_state")]
 script = ExtResource("2_wpfis")
 enemy = NodePath("..")
-current_state = NodePath("idle")
+current_state = NodePath("patrol")
 
-[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("search_state", "state_label")]
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("search_state", "state_label", "hearing_label")]
 script = ExtResource("3_63h86")
 search_state = NodePath("../searching")
-state_label = NodePath("../../state_label/Label3D")
+state_label = NodePath("../../state_label_parent/state_label")
+hearing_label = NodePath("../../hearing_label_parent/hearing_label")
 
-[node name="searching" type="Node" parent="state_machine" node_paths=PackedStringArray("chasing_state", "state_label", "sight_raycast", "idle_state")]
+[node name="searching" type="Node" parent="state_machine" node_paths=PackedStringArray("chasing_state", "state_label", "sight_raycast", "idle_state", "patrol_state")]
 script = ExtResource("4_cowwq")
 chasing_state = NodePath("../chasing")
-state_label = NodePath("../../state_label/Label3D")
+state_label = NodePath("../../state_label_parent/state_label")
 sight_raycast = NodePath("../../Node3D/RayCast3D")
 idle_state = NodePath("../idle")
+patrol_state = NodePath("../patrol")
 
 [node name="chasing" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "searching_state", "state_label", "nav_agent", "sight_raycast")]
 script = ExtResource("5_7qjmv")
 idle_state = NodePath("../idle")
 searching_state = NodePath("../searching")
-state_label = NodePath("../../state_label/Label3D")
+state_label = NodePath("../../state_label_parent/state_label")
 nav_agent = NodePath("../../NavigationAgent3D")
 sight_raycast = NodePath("../../Node3D/RayCast3D")
+
+[node name="patrol" type="Node" parent="state_machine" node_paths=PackedStringArray("search_state", "chasing_state", "state_label", "hearing_label", "nav_agent", "sight_area", "sight_timer", "sight_raycast")]
+script = ExtResource("6_empmb")
+search_state = NodePath("../searching")
+chasing_state = NodePath("../chasing")
+state_label = NodePath("../../state_label_parent/state_label")
+hearing_label = NodePath("../../hearing_label_parent/hearing_label")
+nav_agent = NodePath("../../NavigationAgent3D")
+sight_area = NodePath("../../SightArea")
+sight_timer = NodePath("../../sight_timer")
+sight_raycast = NodePath("../../sight_raycast_2_parent/sight_raycast")
 
 [node name="kill_zone" parent="." instance=ExtResource("6_5orj6")]
 
@@ -100,5 +116,29 @@ sight_raycast = NodePath("../../Node3D/RayCast3D")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("BoxShape3D_d43n5")
 
+[node name="hearing_label_parent" type="Node3D" parent="."]
+
+[node name="hearing_label" type="Label3D" parent="hearing_label_parent"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.43468, 0)
+text = "Hearing:"
+font_size = 64
+
+[node name="sight_timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="sight_raycast_2_parent" type="Node3D" parent="."]
+
+[node name="sight_raycast" type="RayCast3D" parent="sight_raycast_2_parent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -100)
+debug_shape_custom_color = Color(0.964888, 3.85046e-07, 0.481339, 1)
+
 [connection signal="body_entered" from="SightArea" to="state_machine/idle" method="_on_sight_area_body_entered"]
+[connection signal="body_entered" from="SightArea" to="state_machine/patrol" method="_on_sight_area_body_entered"]
 [connection signal="area_entered" from="Hearing" to="state_machine/idle" method="_on_hearing_area_entered"]
+[connection signal="area_entered" from="Hearing" to="state_machine/patrol" method="_on_hearing_area_entered"]
+[connection signal="area_exited" from="Hearing" to="state_machine/idle" method="_on_hearing_area_exited"]
+[connection signal="area_exited" from="Hearing" to="state_machine/patrol" method="_on_hearing_area_exited"]
+[connection signal="target_reached" from="NavigationAgent3D" to="state_machine/patrol" method="_on_navigation_agent_3d_target_reached"]
+[connection signal="timeout" from="sight_timer" to="state_machine/patrol" method="_on_sight_timer_timeout"]

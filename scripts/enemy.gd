@@ -4,24 +4,39 @@ var speed = 4
 var start_rotating = false
 var rotation_amount = 0.0
 
+var all_points = []
+var next_point = 0
 
 @export var player: CharacterBody3D
-@export var label3d: Label3D 
+@export var state_label: Label3D 
 @export var hearing_area: Area3D
+@export var hearing_label: Label3D
+@export var patrol_node: Node3D
 
 @onready var sight_raycast: RayCast3D = $Node3D/RayCast3D
 @onready var nav_agent = $NavigationAgent3D
 
+func _ready() -> void:	
+	for pt in patrol_node.get_children():
+		all_points.append(pt.global_position + Vector3(0,1,0))
 
-func _physics_process(delta: float) -> void:
+
+func _physics_process(delta: float) -> void:	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	#if start_rotating:
 	#	searching(delta)
 	#enemy_sight()
 	
-	
-	label3d.look_at(-player.global_transform.origin, Vector3.UP)
+func _process(delta: float) -> void:
+	state_label.look_at(Vector3(player.global_transform.origin.x, global_transform.origin.y ,player.global_transform.origin.z),Vector3(0,1,0))
+	state_label.rotate_y(deg_to_rad(180))
+	hearing_label.look_at(Vector3(player.global_transform.origin.x, global_transform.origin.y ,player.global_transform.origin.z),Vector3(0,1,0))
+	hearing_label.rotate_y(deg_to_rad(180))
+	#state_label.look_at(-player.global_transform.origin)
+	#hearing_label.look_at(-player.global_transform.origin)
+	#print(player.global_transform.origin)
+	#print(-player.global_transform.origin)
 #func enemy_sight():
 	# if the enemy sees the player
 #	if sight_raycast.is_colliding():

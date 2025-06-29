@@ -32,6 +32,9 @@ func chase():
 		var next_location = nav_agent.get_next_path_position()
 		var current_location = enemy.global_transform.origin
 		var new_velocity = (next_location - current_location).normalized() * speed
+		print(current_location)
+		print(next_location)
+		print(new_velocity)
 		
 		# set the velocity towards the player
 		enemy.velocity = enemy.velocity.move_toward(new_velocity, 0.25)
