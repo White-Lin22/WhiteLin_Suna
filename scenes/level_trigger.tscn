@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ch1lpub556gv0"]
 
-[ext_resource type="Script" path="res://level_trigger.gd" id="1_n705h"]
+[ext_resource type="Script" path="res://scripts/level_trigger.gd" id="1_n705h"]
 
 [node name="level_trigger" type="Area3D"]
 script = ExtResource("1_n705h")

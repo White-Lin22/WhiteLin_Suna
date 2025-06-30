@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://s7crtar8e2gx"]
 
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="1_y7t86"]
-[ext_resource type="Script" path="res://controls.gd" id="2_lcus3"]
+[ext_resource type="Script" path="res://scripts/controls.gd" id="2_lcus3"]
 
 [node name="control_ui" type="Label3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.407609, 0)
