@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dd8c2s3g1u65a"]
+[gd_scene load_steps=17 format=3 uid="uid://dd8c2s3g1u65a"]
 
 [ext_resource type="Script" path="res://scripts/node_3d.gd" id="1_i1mfg"]
 [ext_resource type="Texture2D" uid="uid://cg484jfxvg3cp" path="res://assets/hdri/kloppenheim_07_puresky_4k.exr" id="2_drswp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bibx5kq3prbns" path="res://scenes/test_wall.tscn" id="5_th1de"]
 [ext_resource type="PackedScene" uid="uid://cqldinv75q216" path="res://scenes/barrel.tscn" id="6_ehe8d"]
 [ext_resource type="PackedScene" uid="uid://d2teqccc4pp77" path="res://scenes/actionable.tscn" id="7_go4g7"]
+[ext_resource type="PackedScene" uid="uid://ch1lpub556gv0" path="res://scenes/level_trigger.tscn" id="8_af2h7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_slrff"]
 panorama = ExtResource("2_drswp")
@@ -29,6 +30,8 @@ agent_radius = 1.0
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dteeq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1r5vt"]
 
 [node name="worldv3" type="Node3D" node_paths=PackedStringArray("target") groups=["enemy"]]
 script = ExtResource("1_i1mfg")
@@ -111,3 +114,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9077, 0, 6.57797)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="barrel345654673_with_col/Actionable"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.08123, 0)
 shape = SubResource("CylinderShape3D_dteeq")
+
+[node name="level_trigger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_af2h7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.3841)
+player = NodePath("../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level_trigger"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -1.28928)
+shape = SubResource("BoxShape3D_1r5vt")

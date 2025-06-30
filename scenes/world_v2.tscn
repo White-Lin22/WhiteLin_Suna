@@ -50,7 +50,6 @@ shape = SubResource("CylinderShape3D_iepwk")
 transform = Transform3D(0.99923, 0.0384633, 0.00769202, -0.0392249, 0.979829, 0.195949, 0, -0.1961, 0.980584, 10.256, 4.70689, 21.2972)
 
 [node name="Actionable" parent="barrel/barrel345654673_with_col2" instance=ExtResource("4_53tev")]
-dialogue_start = "npc2"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="barrel/barrel345654673_with_col2/Actionable"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.8, 0)

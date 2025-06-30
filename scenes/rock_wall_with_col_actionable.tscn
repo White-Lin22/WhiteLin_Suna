@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci82ddpnyueek"]
+
+[ext_resource type="PackedScene" uid="uid://0fpbey1nt5ou" path="res://assets/models/rock_wall_with_col/rock_wall.glb" id="1_h3d2q"]
+[ext_resource type="Texture2D" uid="uid://dy6ghc38t4xid" path="res://assets/models/rock_tower/Rock029_low_res-PNG_Color.png" id="2_j3r2u"]
+[ext_resource type="Texture2D" uid="uid://3s5s2uy0ryv0" path="res://assets/models/rock_tower/Rock029_low_res-PNG_NormalGL.png" id="3_2nqgx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwqg7"]
+albedo_color = Color(0.768571, 0.554143, 0.472313, 1)
+albedo_texture = ExtResource("2_j3r2u")
+normal_enabled = true
+normal_texture = ExtResource("3_2nqgx")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[node name="rock_wall" instance=ExtResource("1_h3d2q")]
+
+[node name="rock_wall" parent="." index="0"]
+transform = Transform3D(0.998782, 0, 0, 0, 0.998782, 0, 0, 0, 0.998782, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_jwqg7")
+
+[node name="StaticBody3D" parent="rock_wall" index="0"]
+collision_layer = 5

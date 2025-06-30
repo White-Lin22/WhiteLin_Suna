@@ -40,6 +40,8 @@ func collection_msg_timer():
 	collection_msg.visible = true
 	await get_tree().create_timer(2).timeout
 	collection_msg.visible = false
+	player.win_con = true
+	
 
 #func connected_signal(dialogue):
 #	interact_visible = true

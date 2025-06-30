@@ -31,7 +31,7 @@ func update(delta):
 		player_got = true
 		print("player got: ", player_got)
 	hearing_meter()
-	if hearing_status >= 500:
+	if hearing_status >= 100:
 		go_to_search_state()
 
 	hearing_label.text = "hearing: " + str(hearing_status)

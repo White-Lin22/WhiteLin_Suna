@@ -10,6 +10,7 @@ const JUMP_VELOCITY = 4.5
 var gravity_on = true
 var climbing = false
 var in_conversation = false
+var win_con = false
 
 @export var interact_label: Label
 @export var walkingstate: CollisionShape3D
