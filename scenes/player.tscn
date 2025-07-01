@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://mkssftuhb8s0"]
+[gd_scene load_steps=15 format=3 uid="uid://mkssftuhb8s0"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ofm13"]
 [ext_resource type="Script" path="res://scripts/camera_holder.gd" id="2_r28n3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://seb1ooi3d5i4" path="res://red_eye_closed.png" id="6_o8qaa"]
 [ext_resource type="Texture2D" uid="uid://dscdmek5ni8ue" path="res://orange_eye_closed.png" id="7_olymh"]
 [ext_resource type="Texture2D" uid="uid://dyi5rvv6adhoj" path="res://blue_eye_closed.png" id="8_w3t14"]
+[ext_resource type="Texture2D" uid="uid://ds6whohxvhhl" path="res://eiMxgKKin.png" id="9_eiqah"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvqei"]
 
@@ -19,10 +20,12 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_by1q5"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("interact_label", "walkingstate") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("interact_label", "walkingstate", "camera", "char_col_shape") groups=["Player"]]
 script = ExtResource("1_ofm13")
 interact_label = NodePath("CameraHolder/Camera3D/interact/Control/interact _label")
 walkingstate = NodePath("Area3D/walkingState")
+camera = NodePath("CameraHolder/Camera3D")
+char_col_shape = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_yvqei")
@@ -44,11 +47,15 @@ collection_msg = NodePath("Control/collection_label")
 
 [node name="Control" type="Control" parent="CameraHolder/Camera3D/interact"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1112.0
-offset_bottom = -608.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -61,10 +68,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 304.0
-offset_top = 330.0
-offset_right = 808.0
-offset_bottom = 383.0
+offset_left = -245.0
+offset_top = -39.5
+offset_right = 259.0
+offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_ymkhx")
@@ -81,10 +88,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 428.0
-offset_top = 292.5
-offset_right = 684.0
-offset_bottom = 315.5
+offset_left = -121.0
+offset_top = -77.0
+offset_right = 135.0
+offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_88vfk")
@@ -100,13 +107,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 519.0
-offset_top = 189.0
-offset_right = 1429.0
-offset_bottom = 1089.0
+offset_left = -46.9999
+offset_top = -325.0
+offset_right = 863.0
+offset_bottom = 575.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("6_o8qaa")
 
 [node name="orang_eye_open" type="TextureRect" parent="CameraHolder/Camera3D/interact/Control"]
@@ -117,13 +124,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 519.0
-offset_top = 189.0
-offset_right = 1429.0
-offset_bottom = 1089.0
+offset_left = -46.9999
+offset_top = -325.0
+offset_right = 863.0
+offset_bottom = 575.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("7_olymh")
 
 [node name="eye_closed" type="TextureRect" parent="CameraHolder/Camera3D/interact/Control"]
@@ -133,14 +140,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 519.0
-offset_top = 189.0
-offset_right = 1429.0
-offset_bottom = 1089.0
+offset_left = -46.9999
+offset_top = -325.0
+offset_right = 863.0
+offset_bottom = 575.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_w3t14")
+
+[node name="TextureRect" type="TextureRect" parent="CameraHolder/Camera3D/interact/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 594.0
+offset_bottom = 594.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("9_eiqah")
 
 [node name="WallCheckRays" type="Node3D" parent="."]
 

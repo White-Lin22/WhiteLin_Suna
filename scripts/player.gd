@@ -1,11 +1,20 @@
 extends CharacterBody3D
 
-var speed = 5.0
+var speed = 5
+var default_speed = 3
+var crouch_move_speed = 2
+var run_speed = 5
+var crouch_speed = 20
 var climb_speed = 2.0
 var vault_velocity = 5.0
 
+var default_height = 2
+var crouch_height = 1.5
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const FOV = 75.0
+const FOV_CHANGE = 1.5 
 
 var gravity_on = true
 var climbing = false
@@ -14,6 +23,9 @@ var win_con = false
 
 @export var interact_label: Label
 @export var walkingstate: CollisionShape3D
+@export var camera : Camera3D
+@export var char_col_shape : CollisionShape3D
+
 @onready var wallcheck = $WallCheckRays/wallcheck
 @onready var stillonwall = $WallCheckRays/StillOnWall
 @onready var loudstate = $Area3D/loudState
@@ -51,22 +63,27 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_pressed("sprint"):
-		speed = 5
+		speed = run_speed
 		loudstate.disabled = false
 		quietstate.disabled = true
 		walkingstate.disabled = true
+		
 	elif Input.is_action_pressed("sneak"):
-		speed = 2
+		char_col_shape.shape.height -= crouch_speed * delta
+		speed = crouch_move_speed
 		loudstate.disabled = true
 		quietstate.disabled = false
 		walkingstate.disabled = true
 		
 	else:
-		speed = 3
+		char_col_shape.shape.height += crouch_height * delta
+		speed = default_speed
 		loudstate.disabled = true
 		quietstate.disabled = true
 		walkingstate.disabled = false
 		
+	char_col_shape.shape.height = clamp(char_col_shape.shape.height, crouch_height, default_height)	
+	
 	if wallcheck.is_colliding():
 		if stillonwall.is_colliding():
 			if Input.is_action_pressed("climb"):
@@ -107,6 +124,12 @@ func _physics_process(delta: float) -> void:
 	#else:
 	#	velocity.x = 0
 	#	velocity.z = 0
+	var velocity_clamped = clamp(velocity.length(), 0.5, 10)
+	var target_fov = FOV + FOV_CHANGE * velocity_clamped
+	camera.fov = lerp(camera.fov, target_fov, delta * 16.0)
+	
+	
+	
 	move_and_slide()
 
 func climbing_wall():

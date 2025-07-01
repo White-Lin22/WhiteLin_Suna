@@ -52,7 +52,7 @@ transform = Transform3D(-0.35201, 0.630764, 0.691539, -0.187697, -0.771389, 0.60
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("4_jdda0")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.0173, 2.82199, -72.5729)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.0173, 1.48025, -72.5729)
 
 [node name="Enemy3" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("3_btv58")]
 transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, -12.961, 1, 82.517)
