@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://be6i21v2g8n06"]
+[gd_scene load_steps=19 format=3 uid="uid://be6i21v2g8n06"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_q4705"]
+[ext_resource type="ArrayMesh" uid="uid://dl82jtu3ht6bb" path="res://cone_mesh.tres" id="2_1rhu6"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="2_wpfis"]
 [ext_resource type="Script" path="res://scripts/idle.gd" id="3_63h86"]
 [ext_resource type="Script" path="res://scripts/searching.gd" id="4_cowwq"]
 [ext_resource type="Script" path="res://scripts/chasing.gd" id="5_7qjmv"]
 [ext_resource type="PackedScene" uid="uid://pxguikj2w23w" path="res://scenes/kill_zone.tscn" id="6_5orj6"]
 [ext_resource type="Script" path="res://scripts/patrol.gd" id="6_empmb"]
+[ext_resource type="PackedScene" uid="uid://db4lj01bjtv11" path="res://scenes/hearing_bar.tscn" id="9_faypo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5c107"]
 
@@ -21,15 +23,24 @@ material = SubResource("StandardMaterial3D_ukkos")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w3vmi"]
 points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpbre"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(1, 0, 0, 0.0784314)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_8chfc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d43n5"]
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("state_label", "hearing_area", "hearing_label")]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bwrdg"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("state_label", "hearing_area", "hearing_label", "hearing_bar_sprite")]
 script = ExtResource("1_q4705")
 state_label = NodePath("state_label_parent/state_label")
 hearing_area = NodePath("Hearing")
 hearing_label = NodePath("hearing_label_parent/hearing_label")
+hearing_bar_sprite = NodePath("hearing_label_parent/Sprite3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_5c107")
@@ -46,6 +57,12 @@ mesh = SubResource("BoxMesh_ex4bx")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="SightArea"]
 transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0.5, -5)
 shape = SubResource("ConvexPolygonShape3D_w3vmi")
+
+[node name="ConeMesh" type="MeshInstance3D" parent="SightArea"]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0.5, -5)
+visible = false
+mesh = ExtResource("2_1rhu6")
+surface_material_override/0 = SubResource("StandardMaterial3D_cpbre")
 
 [node name="Hearing" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031601, 0, -0.00729752)
@@ -95,7 +112,7 @@ nav_agent = NodePath("../../NavigationAgent3D")
 sight_raycast = NodePath("../../sight_raycast_2_parent/sight_raycast")
 sight_area = NodePath("../../SightArea")
 
-[node name="patrol" type="Node" parent="state_machine" node_paths=PackedStringArray("search_state", "chasing_state", "state_label", "hearing_label", "nav_agent", "sight_area", "sight_raycast")]
+[node name="patrol" type="Node" parent="state_machine" node_paths=PackedStringArray("search_state", "chasing_state", "state_label", "hearing_label", "nav_agent", "sight_area", "sight_raycast", "hearing_bar")]
 script = ExtResource("6_empmb")
 search_state = NodePath("../searching")
 chasing_state = NodePath("../chasing")
@@ -104,6 +121,7 @@ hearing_label = NodePath("../../hearing_label_parent/hearing_label")
 nav_agent = NodePath("../../NavigationAgent3D")
 sight_area = NodePath("../../SightArea")
 sight_raycast = NodePath("../../sight_raycast_2_parent/sight_raycast")
+hearing_bar = NodePath("../../SubViewport/ProgressBar")
 
 [node name="kill_zone" parent="." instance=ExtResource("6_5orj6")]
 
@@ -118,6 +136,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.4
 text = "Hearing:"
 font_size = 64
 
+[node name="Sprite3D" type="Sprite3D" parent="hearing_label_parent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94235, 0)
+texture = SubResource("ViewportTexture_bwrdg")
+
 [node name="sight_timer" type="Timer" parent="."]
 wait_time = 0.01
 autostart = true
@@ -128,6 +150,12 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 0, -12)
 debug_shape_custom_color = Color(0.964888, 3.85046e-07, 0.481339, 1)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="ProgressBar" parent="SubViewport" instance=ExtResource("9_faypo")]
+value = 0.0
 
 [connection signal="body_entered" from="SightArea" to="state_machine/idle" method="_on_sight_area_body_entered"]
 [connection signal="body_entered" from="SightArea" to="state_machine/patrol" method="_on_sight_area_body_entered"]

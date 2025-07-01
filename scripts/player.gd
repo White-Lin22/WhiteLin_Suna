@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_pressed("sprint"):
-		speed = 8
+		speed = 5
 		loudstate.disabled = false
 		quietstate.disabled = true
 		walkingstate.disabled = true
@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		walkingstate.disabled = true
 		
 	else:
-		speed = 5
+		speed = 3
 		loudstate.disabled = true
 		quietstate.disabled = true
 		walkingstate.disabled = false

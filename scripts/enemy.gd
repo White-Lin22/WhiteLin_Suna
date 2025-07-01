@@ -1,19 +1,21 @@
 extends CharacterBody3D
 
-var speed = 4
+var speed = 5.5
 var start_rotating = false
 var rotation_amount = 0.0
 
 var all_points = []
 var next_point = 0
 
+
 @export var player: CharacterBody3D
 @export var state_label: Label3D 
 @export var hearing_area: Area3D
 @export var hearing_label: Label3D
 @export var patrol_node: Node3D
+@export var hearing_bar_sprite : Sprite3D
 
-@onready var sight_raycast: RayCast3D = $Node3D/RayCast3D
+
 @onready var nav_agent = $NavigationAgent3D
 
 func _ready() -> void:	
@@ -33,6 +35,8 @@ func _process(delta: float) -> void:
 	state_label.rotate_y(deg_to_rad(180))
 	hearing_label.look_at(Vector3(player.global_transform.origin.x, global_transform.origin.y ,player.global_transform.origin.z),Vector3(0,1,0))
 	hearing_label.rotate_y(deg_to_rad(180))
+	hearing_bar_sprite.look_at(Vector3(player.global_transform.origin.x, global_transform.origin.y ,player.global_transform.origin.z),Vector3(0,1,0))
+	hearing_bar_sprite.rotate_y(deg_to_rad(180))
 	#state_label.look_at(-player.global_transform.origin)
 	#hearing_label.look_at(-player.global_transform.origin)
 	#print(player.global_transform.origin)

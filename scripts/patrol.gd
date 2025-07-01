@@ -13,10 +13,15 @@ var speed = 200
 @export var nav_agent : NavigationAgent3D
 @export var sight_area : Area3D
 @export var sight_raycast : RayCast3D
+@export var hearing_bar : ProgressBar
 
 var player_got = false
 var hearing_status = 0
 var hearing_on = false
+
+var eye_open
+var eye_closed
+var orange_eye_open
 
 
 func on_enter()-> void:
@@ -25,25 +30,38 @@ func on_enter()-> void:
 	state_label.text ="[patrol]"
 	#print("entered idle state")
 
-func update(delta): 
+func update(delta): 	
 	while player_got == false:
 		player = get_tree().get_first_node_in_group("Player")
 		player_got = true
 		print("player got: ", player_got)
+		
+	eye_open = player.get_node("CameraHolder/Camera3D/interact/Control/eye_open")
+	eye_closed = player.get_node("CameraHolder/Camera3D/interact/Control/eye_closed")
+	orange_eye_open = player.get_node("CameraHolder/Camera3D/interact/Control/orang_eye_open")
+	
 	hearing_meter()
 	if hearing_status >= 100:
 		go_to_search_state()
 
+
 	hearing_label.text = "hearing: " + str(hearing_status)
+	hearing_bar.value = hearing_status
 		
 func physics_update(delta):
 	patrolling(delta)
 	
 	
 func go_to_search_state():
+	eye_closed.visible = false
+	eye_open.visible = false
+	orange_eye_open.visible = true
 	next_state = search_state
 
 func go_to_chase_state():
+	eye_closed.visible = false
+	eye_open.visible = true
+	orange_eye_open.visible = false
 	next_state = chasing_state
 
 func hearing_meter():
@@ -108,5 +126,5 @@ func _on_sight_timer_timeout() -> void:
 					if collider == player:
 						go_to_chase_state()
 					else:
-						print("player not detected kdfkdfkdf")
-				
+						print("player not detected")
+						

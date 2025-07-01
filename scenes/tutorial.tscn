@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dxv6w0xuqgd0d"]
 
-[ext_resource type="Script" path="res://scenes/tutorial.gd" id="1_wudnr"]
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_wudnr"]
 [ext_resource type="PackedScene" uid="uid://be6i21v2g8n06" path="res://scenes/enemy.tscn" id="3_btv58"]
 [ext_resource type="PackedScene" uid="uid://s7crtar8e2gx" path="res://scenes/control_ui2.tscn" id="3_eybfr"]
 [ext_resource type="Texture2D" uid="uid://cg484jfxvg3cp" path="res://assets/hdri/kloppenheim_07_puresky_4k.exr" id="3_i60jc"]
@@ -52,7 +52,7 @@ transform = Transform3D(-0.35201, 0.630764, 0.691539, -0.187697, -0.771389, 0.60
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("4_jdda0")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.0868, 1.24834, -72.2996)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.0173, 2.82199, -72.5729)
 
 [node name="Enemy3" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("3_btv58")]
 transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, -12.961, 1, 82.517)
@@ -110,8 +110,20 @@ text = "Mouse to look around
 "
 player = NodePath("../../Player")
 
+[node name="control_ui13" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1.52807, -59.6173)
+text = "Shift to run
+"
+player = NodePath("../../Player")
+
+[node name="control_ui14" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2.14324, -57.6829)
+text = "Control to sneak
+"
+player = NodePath("../../Player")
+
 [node name="control_ui4" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5872, 2.53649, -19.2133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5872, 0.960658, -19.2133)
 text = "Hold left click to climb
 
 "
@@ -119,27 +131,62 @@ font_size = 32
 player = NodePath("../../Player")
 
 [node name="control_ui5" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7418, 1.48279, 17.7579)
-text = "Hide behind cover to avoid Enemy 
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5869, 0.748348, 10.3327)
+text = "Hide behind cover to avoid Enemy deetection
 "
-font_size = 32
+font_size = 16
 player = NodePath("../../Player")
 
 [node name="control_ui6" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.52947, 1.82172, 39.8696)
-text = "If you are too loud then they will ssearch for you
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0363, 1.03177, -2.64788)
+text = "The eye icon tell you what state the enemy is in
 "
+font_size = 16
+player = NodePath("../../Player")
+
+[node name="control_ui10" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5015, 1.32089, 1.26706)
+text = "blue means undetected
+
+"
+font_size = 16
+player = NodePath("../../Player")
+
+[node name="control_ui11" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2822, 1.5957, 2.46047)
+text = "orange means they're searching for oyu
+"
+font_size = 16
+player = NodePath("../../Player")
+
+[node name="control_ui12" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0254, 2.02698, 3.99542)
+text = "red means run"
 font_size = 32
+player = NodePath("../../Player")
+
+[node name="control_ui8" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1599, 1.05368, 13.4036)
+text = "Being faster meaning being louder
+"
+font_size = 16
+player = NodePath("../../Player")
+
+[node name="control_ui9" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0137, 1.14682, 17.1236)
+text = "making you easier to detect
+"
+font_size = 16
 player = NodePath("../../Player")
 
 [node name="control_ui7" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11118, 1.82172, 47.2712)
-text = "The fog will cover your escape, find the barrel and leave with the goal"
+text = "The fog will cover your escape, find the barrel and leave with the artifact"
 font_size = 32
 player = NodePath("../../Player")
 
 [node name="control_ui2" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2.47457, -57.254)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1.49906, -50.4685)
 text = "Space to jump"
 player = NodePath("../../Player")
 

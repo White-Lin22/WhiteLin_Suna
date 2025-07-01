@@ -17,8 +17,15 @@ var start_rotating = false
 var rotation_amount = 0.0
 var rotation_speed = 180
 
+var eye_closed
+var eye_open
+var orange_eye_open
+
 func on_enter():
 	player = get_tree().get_first_node_in_group("Player")
+	eye_open = player.get_node("CameraHolder/Camera3D/interact/Control/eye_open")
+	eye_closed = player.get_node("CameraHolder/Camera3D/interact/Control/eye_closed")
+	orange_eye_open = player.get_node("CameraHolder/Camera3D/interact/Control/orang_eye_open")
 	print("entered searching")
 	state_label.text ="[seaching]"
 
@@ -29,11 +36,13 @@ func physics_update(delta):
 			
 # spins enemy twice	
 func spinning(delta):
+
 	if rotation_amount < 720:
 		var step = rotation_speed*delta
 		enemy.rotate_y(deg_to_rad(step))
 		rotation_amount += step
 		print(rotation_amount)
+
 	else:
 		# resets the both the counter for rotation and the boolean for starting rotations
 		rotation_amount = 0
@@ -47,12 +56,18 @@ func spinning(delta):
 #		go_to_chase_state()
 		
 func go_to_chase_state():
+	eye_closed.visible = false
+	eye_open.visible = true
+	orange_eye_open.visible = false
 	next_state = chasing_state
 	
 func go_to_idle_state():
 	next_state = idle_state
 	
 func go_to_patrol_state():
+	eye_open.visible = false
+	eye_closed.visible = true
+	orange_eye_open.visible = false
 	next_state = patrol_state
 
 
@@ -68,4 +83,4 @@ func _on_sight_timer_timeout() -> void:
 					if collider == player:
 						go_to_chase_state()
 					else:
-						print("player not detected kdfkdfkdf")
+						print("player not detected")
