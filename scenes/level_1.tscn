@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d4i13h5ouywkf"]
+[gd_scene load_steps=19 format=3 uid="uid://5iqgi83scyg5"]
 
 [ext_resource type="Script" path="res://level_1.gd" id="1_wvks6"]
 [ext_resource type="Texture2D" uid="uid://cg484jfxvg3cp" path="res://assets/hdri/kloppenheim_07_puresky_4k.exr" id="2_ngul7"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c4lx7g6svjbg1" path="res://assets/models/sand_dunes_with_col/simple_sand_dunes._with_colglb.glb" id="8_cmg41"]
 [ext_resource type="PackedScene" uid="uid://bpadnjmjait6x" path="res://scenes/rock_wall_with_col.tscn" id="9_8s23l"]
 [ext_resource type="PackedScene" uid="uid://ci82ddpnyueek" path="res://scenes/rock_wall_with_col_actionable.tscn" id="10_udbly"]
-[ext_resource type="PackedScene" uid="uid://d2il81khb32f5" path="res://invis_wall.tscn" id="11_5ahrt"]
+[ext_resource type="PackedScene" path="res://invis_wall.tscn" id="11_5ahrt"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2npnj"]
 panorama = ExtResource("2_ngul7")
@@ -57,6 +57,41 @@ transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654
 player = NodePath("../Player")
 patrol_node = NodePath("../patrol_pt_gd1")
 
+[node name="Enemy4" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_vm1xa")]
+transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 80.059, 10.2479, 71.7928)
+player = NodePath("../Player")
+patrol_node = NodePath("../patrol_pt_gd1")
+
+[node name="Enemy6" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_vm1xa")]
+transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 80.5078, 7.99463, 105.309)
+player = NodePath("../Player")
+patrol_node = NodePath("../patrol_pt_gd1")
+
+[node name="Enemy7" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_vm1xa")]
+transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 91.5314, 7.99463, 130.256)
+player = NodePath("../Player")
+patrol_node = NodePath("../patrol_pt_gd1")
+
+[node name="Enemy8" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_vm1xa")]
+transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 80.5864, 7.99463, 142.161)
+player = NodePath("../Player")
+patrol_node = NodePath("../patrol_pt_gd1")
+
+[node name="Enemy10" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_vm1xa")]
+transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 32.4886, 7.99463, 108.127)
+player = NodePath("../Player")
+patrol_node = NodePath("../patrol_pt_gd1")
+
+[node name="Enemy9" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_vm1xa")]
+transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 78.6014, 19.6159, 157.244)
+player = NodePath("../Player")
+patrol_node = NodePath("../patrol_pt_gd1")
+
+[node name="Enemy5" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_vm1xa")]
+transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 137.443, 5.45882, 85.4138)
+player = NodePath("../Player")
+patrol_node = NodePath("../patrol_pt_gd1")
+
 [node name="level_trigger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_b7j1b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85593, 3.61451, 106.521)
 player = NodePath("../Player")
@@ -68,10 +103,13 @@ shape = SubResource("BoxShape3D_56tj6")
 [node name="patrol_pt_gd1" type="Node3D" parent="."]
 
 [node name="pt_1" type="Marker3D" parent="patrol_pt_gd1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 23.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 21.911, -2)
+
+[node name="pt_2" type="Marker3D" parent="patrol_pt_gd1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9725, 21.8711, -2)
 
 [node name="pt_3" type="Marker3D" parent="patrol_pt_gd1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 23.0248, -43.0219)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 22.9065, -43.0219)
 
 [node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(25.2725, 0, 0, 0, 16.7693, 0, 0, 0, 6.07945, 58.8599, 11.465, -227.603)
@@ -108,36 +146,217 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 293.205, 0, 251.758)
 transform = Transform3D(1, 0, 0, 0, 3.16458, 0, 0, 0, 3.70318, 1.60237, 0.785881, -69.0018)
 
 [node name="rock_wall6" parent="NavigationRegion3D/walls" instance=ExtResource("9_8s23l")]
-transform = Transform3D(0.853614, 0, -0.354704, 0, 1.69131, 0, 0.520905, 0, 0.581258, 39.4184, 0.785881, -64.5245)
+transform = Transform3D(0.731895, 0, -0.271821, 0, 1.69131, 0, 0.446628, 0, 0.445436, 39.4184, 0.785881, -64.5245)
 
 [node name="rock_wall8" parent="NavigationRegion3D/walls" instance=ExtResource("9_8s23l")]
-transform = Transform3D(0.436456, 0, -0.412388, 0, 1.03225, 0, 0.266341, 0, 0.675786, 22.7004, 1.9399, -54.1896)
+transform = Transform3D(0.436456, 0, -0.412388, 0, 1.04893, 0, 0.266341, 0, 0.675786, 22.7004, 1.9399, -54.1896)
 
 [node name="rock_wall7" parent="NavigationRegion3D/walls" instance=ExtResource("9_8s23l")]
 transform = Transform3D(-0.659293, 0, -0.79274, 0, 1.70929, 0, 1.04649, 0, -0.499427, 40.1212, 0.785881, -81.6364)
 
 [node name="rock_wall2" parent="NavigationRegion3D/walls" instance=ExtResource("9_8s23l")]
-transform = Transform3D(0.732316, 0, 0, 0, 1.15313, 0, 0, 0, 1.98445, 13.8675, 0.785881, -28.0143)
+transform = Transform3D(0.732316, 0, 0, 0, 1.11617, 0, 0, 0, 3.49846, 13.8675, 0.785881, -18.4647)
 
 [node name="rock_wall3" parent="NavigationRegion3D/walls" instance=ExtResource("10_udbly")]
 transform = Transform3D(0.396179, 0, 0.101615, 0, 0.764112, 0, -0.425355, 0, 0.0946446, 25.6518, 6.92762, -62.8065)
 
 [node name="rock_wall4" parent="NavigationRegion3D/walls" instance=ExtResource("10_udbly")]
-transform = Transform3D(0.581278, 0, 0, 0, 0.42778, 0, 0, 0, 0.138864, 13.5264, 22.4154, 2.36248)
+transform = Transform3D(0.581278, 0, 0, 0, 0.468114, 0, 0, 0, 0.138864, 13.5264, 21.6697, 2.36248)
 
 [node name="rock_wall5" parent="NavigationRegion3D/walls" instance=ExtResource("9_8s23l")]
 transform = Transform3D(0.732316, 0, 0, 0, 0.72252, 0, 0, 0, 1.98445, 13.8675, 17.3901, 23.3969)
 
+[node name="rock_wall9" parent="NavigationRegion3D/walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.0565825, 0, -0.729954, 0, 3.59786, 0, 0.723957, 0, 0.0570512, 14.9799, -5.95081, 79.3977)
+
+[node name="main_level" type="Node3D" parent="NavigationRegion3D/walls"]
+
+[node name="rock_wall9" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.155194, 0, -1.36468, 0, 1.15313, 0, 0.715683, 0, -0.295927, 128.445, 0.785896, 58.2155)
+
+[node name="rock_wall18" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.334435, 0, -1.28589, 0, 0.68724, 0, 0.459804, 0, -0.935284, 64.8934, 0.919197, 36.4969)
+
+[node name="rock_wall17" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.472598, 0, -0.667041, 0, 0.389498, 0, 2.1794, 0, -0.144646, 33.84, 19.0455, 57.3403)
+
+[node name="rock_wall20" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.369482, 1.14992, -0.0411281, 0, 0.147623, 0.335436, 1.70388, 0.249358, -0.00891853, 16.071, 4.40332, 54.5779)
+
+[node name="rock_wall21" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.180051, 0.847612, -0.0411281, 0, 0.108814, 0.335436, 0.830314, 0.183802, -0.00891853, 27.3567, 6.0391, 64.0568)
+
+[node name="rock_wall22" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.14891, 0.800563, -0.0307612, 0, 0.102774, 0.250884, 0.686705, 0.1736, -0.00667049, 35.2152, 7.06038, 66.2286)
+
+[node name="rock_wall10" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.432706, 0, -1.12656, 0, 1.15313, 0, 0.590807, 0, -0.825093, 180.39, 0.785881, 89.9523)
+
+[node name="rock_wall19" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.432706, 0, -1.12656, 0, 0.959997, 0, 0.590807, 0, -0.825093, 173.36, 0.785881, 99.5519)
+
+[node name="rock_wall32" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-1.33395, 0, -1.12656, 0, 0.959997, 0, 1.82135, 0, -0.825093, 179.199, 14.3507, 106.816)
+
+[node name="rock_wall33" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.472524, 0, -0.83245, 0, 0.959997, 0, 1.24977, 0, 0.314739, 164.937, 14.3507, 108.317)
+
+[node name="rock_wall34" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-1.40088, 0, 0.584489, 0, 0.959997, 0, -1.22004, 0, -0.671123, 124.078, 14.3507, 114.853)
+
+[node name="rock_wall35" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.298496, 0, 0.867468, 0, 0.105604, 0, -0.259964, 0, -0.996045, 76.2035, 16.754, 155.34)
+
+[node name="rock_wall23" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.432706, 0, -0.919061, 0, 0.959997, 0, 0.590807, 0, -0.673119, 156.624, 0.785877, 117.924)
+
+[node name="rock_wall28" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.519693, 0, -0.802616, 0, 1.26912, 0, 0.515951, 0, -0.808436, 72.6068, 3.61668, 199.005)
+
+[node name="rock_wall29" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.519693, 0, -0.802616, 0, 1.26912, 0, 0.515951, 0, -0.808436, 81.6134, 3.61668, 190.544)
+
+[node name="rock_wall30" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.684738, 0, -0.237079, 0, 1.26912, 0, 0.259656, 0, -0.625199, 85.817, 3.61668, 190.886)
+
+[node name="rock_wall31" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.0828624, 0, -0.732791, 0, 1.26912, 0, 0.727613, 0, -0.0834521, 78.4225, 3.61668, 167.261)
+
+[node name="rock_wall36" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.0828624, 0, -0.732791, 0, 0.788134, 0, 0.727613, 0, -0.0834521, 72.8657, 3.61668, 156.789)
+
+[node name="rock_wall37" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.678054, 0, -0.278609, 0, 0.788133, 0, 0.27664, 0, -0.68288, 44.182, 3.61668, 162.407)
+
+[node name="rock_wall27" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.762097, 0, -0.919061, 0, 0.959997, 0, 1.04055, 0, -0.673119, 150.192, 0.785877, 127.567)
+
+[node name="rock_wall24" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.00132924, 0, -0.691466, 0, 0.959997, 0, 0.732315, 0, -0.00125508, 148.488, 0.785877, 136.487)
+
+[node name="rock_wall25" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.99915, 0.000623603, -0.286534, 0.0010417, 0.959997, -0.000383615, 0.444201, -0.000848656, -0.644506, 125.22, 0.816612, 133.811)
+
+[node name="rock_wall11" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.704232, 0, -0.383001, 0, 1.15313, 0, 0.200858, 0, -1.34284, 200.423, 0.785881, 142.177)
+
+[node name="rock_wall12" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.551224, 0, -0.919314, 0, 1.15313, 0, 0.482119, 0, -1.05109, 240.339, 0.785881, 194.398)
+
+[node name="rock_wall13" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.67892, 0, -0.523438, 0, 1.87031, 0, 0.274508, 0, -1.29458, 33.1098, 0.785881, 168.433)
+
+[node name="rock_wall26" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.725319, 0, -0.192579, 0, 1.87031, 0, 0.100995, 0, -1.38305, 18.6541, 0.852989, 132.555)
+
+[node name="rock_wall14" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.527919, 0, -0.967771, 0, 1.78862, 0, 0.507531, 0, -1.00665, 72.6258, 0.785881, 218.167)
+
+[node name="rock_wall15" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.334017, 0.0146296, -1.24263, 0.00848188, 1.7354, 0.00493675, 0.65165, -0.0150893, -0.637, 127.77, 0.695641, 253.879)
+
+[node name="rock_wall16" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.133392, 0.0144419, -1.37298, 0.00738513, 1.71314, 0.00936188, 0.720027, -0.0148957, -0.254455, 191.322, 0.296791, 269.623)
+
+[node name="rock_wall" parent="NavigationRegion3D/walls/main_level" instance=ExtResource("10_udbly")]
+transform = Transform3D(0.708551, 0, 0, 0, 0.898864, 0, 0, 0, 0.157112, 32.779, 0.534895, 134.423)
+
+[node name="small walls" type="Node3D" parent="NavigationRegion3D/walls/main_level"]
+
+[node name="rock_wall" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.03169, 0.00794315, 0.358694, -0.00126272, 0.361523, 0.00435063, -0.022938, -0.00892769, 0.495315, 101.196, 1.25463, 126.927)
+
+[node name="rock_wall3" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.138549, 0.0100275, 0.190408, -0.00552062, 0.456391, 0.00230947, -0.100285, -0.0112704, 0.262931, 89.9946, -0.253226, 140.419)
+
+[node name="rock_wall10" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.0565889, 0.00994061, 0.223257, -0.00333838, 0.452435, -0.0012266, -0.0848381, -0.0111727, 0.148966, 146.194, -2.60777, 95.0741)
+
+[node name="rock_wall11" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.107042, 0.0115224, 0.10857, -0.00631476, 0.52443, -0.000596497, -0.160477, -0.0129506, 0.0724424, 167.987, -2.8447, 104.87)
+
+[node name="rock_wall13" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.107042, 0.0115224, 0.10857, -0.00631476, 0.52443, -0.000596497, -0.160477, -0.0129506, 0.0724424, 130.533, -2.66431, 78.8512)
+
+[node name="rock_wall14" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.107042, 0.0115224, 0.10857, -0.00631476, 0.52443, -0.000596497, -0.160477, -0.0129506, 0.0724424, 127.282, -2.37481, 87.6819)
+
+[node name="rock_wall12" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.121395, 0.0115224, 0.0914681, -0.00561177, 0.52443, 0.000289621, -0.119238, -0.0129506, 0.0931091, 162.161, -2.49927, 113.674)
+
+[node name="rock_wall9" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.496518, 0.0120319, 0.190408, -0.0197842, 0.547618, 0.00230947, -0.359392, -0.0135232, 0.262931, 69.5702, -0.684401, 104.787)
+
+[node name="rock_wall15" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.242401, 0.0170816, 0.30703, -0.0262125, 0.632915, -0.00535902, -0.707839, -0.0175883, 0.105342, 89.1076, -0.134911, 73.2573)
+
+[node name="rock_wall5" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.110752, 0.0073171, 0.0566813, -0.00441304, 0.333029, 0.000687492, -0.0801654, -0.00822404, 0.0782702, 100.211, 0.330942, 139.716)
+
+[node name="rock_wall6" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.110752, 0.0073171, 0.0566813, -0.00441304, 0.333029, 0.000687492, -0.0801654, -0.00822404, 0.0782702, 86.2914, 1.98113, 147.76)
+
+[node name="rock_wall17" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.29748, 0.00731711, 0.0816896, -0.0118534, 0.33303, 0.00099082, -0.215323, -0.00822406, 0.112804, 40.2808, 3.94539, 108.293)
+
+[node name="rock_wall20" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.00822505, 0.00731711, 0.138943, -0.0032531, 0.33303, -0.00282411, -0.124415, -0.00822406, 0.00925938, 29.5153, 4.46762, 119.862)
+
+[node name="rock_wall19" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.364472, 0.00731711, -0.0173484, -0.00687297, 0.33303, 0.00379256, 0.0459599, -0.00822406, 0.138143, 31.9806, 2.04574, 90.0751)
+
+[node name="rock_wall18" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.131332, 0.00771246, -0.0563312, -0.00194185, 0.351024, 0.006026, 0.038214, -0.00866841, 0.193901, 113.56, -0.811136, 69.1526)
+
+[node name="rock_wall2" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.0390035, 0, 0.40064, 0, 0.32542, 0, -0.0246284, 0, 0.634485, 75.2341, 2.26718, 84.7266)
+
+[node name="rock_wall16" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.031171, 0, -0.179557, 0, 0.32542, 0, 0.0340029, 0, 0.164603, 77.0301, 5.59245, 60.6424)
+
+[node name="rock_wall7" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.0375385, 0, 0.275744, 0, 0.32542, 0, -0.0268085, 0, 0.386108, 60.5089, 3.01138, 121.523)
+
+[node name="rock_wall21" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.0349101, 0, -0.145118, 0, 0.230398, 0, 0.0301516, 0, 0.16802, 94.297, 16.7303, 135.295)
+
+[node name="rock_wall22" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.142045, 0, -0.0849031, 0, 0.230398, 0, 0.122683, 0, 0.0983022, 107.685, 16.7303, 122.533)
+
+[node name="rock_wall23" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.142045, 0, -0.093104, 0, 0.230398, 0, 0.122683, 0, 0.107797, 80.4845, 16.7303, 147.406)
+
+[node name="rock_wall24" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.0151147, 0, -0.141975, 0, 0.230398, 0, 0.187081, 0, -0.0114705, 65.3228, 16.7303, 155.6)
+
+[node name="rock_wall25" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(-0.0151147, 0, -0.141975, 0, 0.230398, 0, 0.187081, 0, -0.0114705, 76.9444, 16.7303, 151.494)
+
+[node name="rock_wall26" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.024164, 0, -0.0857813, 0, 0.230398, 0, 0.186129, 0, 0.0111365, 50.4891, 16.7303, 148.919)
+
+[node name="rock_wall8" parent="NavigationRegion3D/walls/main_level/small walls" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.0431517, 0, 0.167679, 0, 0.32542, 0, -0.0163022, 0, 0.443844, 50.7288, 3.01138, 99.8525)
+
 [node name="obs" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="rock_wall" parent="NavigationRegion3D/obs" instance=ExtResource("9_8s23l")]
-transform = Transform3D(0.405463, 0.000778028, -0.000687123, -0.000554202, 0.548078, 0.000759602, 0.00280345, -0.00417754, 0.099529, 11.8235, 20.2472, -36.9123)
+transform = Transform3D(0.405463, 0.000778028, -0.000687123, -0.000554202, 0.548078, 0.000759602, 0.00280345, -0.00417754, 0.099529, 11.8221, 19.2905, -36.905)
+
+[node name="rock_wall4" parent="NavigationRegion3D/obs" instance=ExtResource("9_8s23l")]
+transform = Transform3D(0.202995, 0.000305439, -0.00034517, -0.000277461, 0.215168, 0.000381578, 0.00140355, -0.00164004, 0.0499974, 17.7434, 21.5656, -51.3916)
 
 [node name="rock_wall2" parent="NavigationRegion3D/obs" instance=ExtResource("9_8s23l")]
-transform = Transform3D(0.405463, 0.000778028, -0.000687123, -0.000554202, 0.548078, 0.000759602, 0.00280345, -0.00417754, 0.099529, 11.8235, 20.2472, -23.5287)
+transform = Transform3D(0.405463, 0.000778028, -0.000687123, -0.000554202, 0.548078, 0.000759602, 0.00280345, -0.00417754, 0.099529, 11.8219, 19.1311, -23.5202)
 
 [node name="rock_wall3" parent="NavigationRegion3D/obs" instance=ExtResource("9_8s23l")]
-transform = Transform3D(0.405463, 0.000778028, -0.000687123, -0.000554202, 0.548078, 0.000759602, 0.00280345, -0.00417754, 0.099529, 11.8235, 20.2472, -10.4068)
+transform = Transform3D(0.405463, 0.000778028, -0.000687123, -0.000554202, 0.548078, 0.000759602, 0.00280345, -0.00417754, 0.099529, 11.8222, 19.3648, -10.4001)
 
 [node name="invis_wall" parent="NavigationRegion3D/obs" instance=ExtResource("11_5ahrt")]
-transform = Transform3D(0.999873, 0, 0.798454, 0, 30, 0, -0.0159691, 0, 49.9936, 20.3663, 18, -20.3867)
+transform = Transform3D(0.999873, 0, 0.798454, 0, 30, 0, -0.0159691, 0, 49.9936, 20.3663, 18, -16.9392)
+
+[node name="invis_wall3" parent="NavigationRegion3D/obs" instance=ExtResource("11_5ahrt")]
+transform = Transform3D(0.599206, 0, 50.5421, 0, 30, 0, -0.800596, 0, 37.8282, 47.2132, 18.6952, 28.3333)
+
+[node name="invis_wall2" parent="NavigationRegion3D/obs" instance=ExtResource("11_5ahrt")]
+transform = Transform3D(1.05102, 0, -6.31504, 0, 30, 0, 0.695969, 0, 9.53664, 23.4902, 18, -45.1473)
