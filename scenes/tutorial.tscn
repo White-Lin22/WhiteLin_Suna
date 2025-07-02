@@ -40,7 +40,6 @@ albedo = Color(0.581351, 0.191429, 1.92523e-07, 1)
 emission = Color(0.80843, 0.339985, 0, 1)
 
 [node name="Tutorial" type="Node3D" node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.165447, 0, -0.155041)
 script = ExtResource("1_wudnr")
 target = NodePath("Player")
 
