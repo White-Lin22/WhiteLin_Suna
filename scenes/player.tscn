@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://mkssftuhb8s0"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_ofm13"]
-[ext_resource type="Script" path="res://scripts/camera_holder.gd" id="2_r28n3"]
-[ext_resource type="Script" path="res://scripts/interact.gd" id="3_ro5my"]
+[ext_resource type="Script" uid="uid://cvk8b3vwkcwiu" path="res://scripts/player.gd" id="1_ofm13"]
+[ext_resource type="Script" uid="uid://c7mix7mpjiblo" path="res://scripts/camera_holder.gd" id="2_r28n3"]
+[ext_resource type="Script" uid="uid://dw0yme6tjls18" path="res://scripts/interact.gd" id="3_ro5my"]
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="4_ymkhx"]
 [ext_resource type="FontFile" uid="uid://cwgntu2vlh2m4" path="res://assets/font/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="5_88vfk"]
 [ext_resource type="Texture2D" uid="uid://seb1ooi3d5i4" path="res://red_eye_closed.png" id="6_o8qaa"]

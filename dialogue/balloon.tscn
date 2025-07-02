@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://73jm5qjy52vq"]
 
-[ext_resource type="Script" path="res://dialogue/balloon.gd" id="1_36de5"]
+[ext_resource type="Script" uid="uid://b8d7ar57turyk" path="res://dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
+[ext_resource type="Script" uid="uid://dq2k662lv1vpe" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="3_f2der"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
