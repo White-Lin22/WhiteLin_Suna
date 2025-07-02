@@ -16,12 +16,12 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_puila"]
 panorama = ExtResource("3_i60jc")
 
-[sub_resource type="Sky" id="Sky_3qhm5"]
+[sub_resource type="Sky" id="Sky_kgxdp"]
 sky_material = SubResource("PanoramaSkyMaterial_puila")
 
 [sub_resource type="Environment" id="Environment_8oemp"]
 background_mode = 2
-sky = SubResource("Sky_3qhm5")
+sky = SubResource("Sky_kgxdp")
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.04
 volumetric_fog_albedo = Color(0.614502, 0.249329, 3.85046e-07, 1)
@@ -48,11 +48,11 @@ target = NodePath("Player")
 environment = SubResource("Environment_8oemp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.35201, 0.630764, 0.691539, -0.187697, -0.771389, 0.608054, 0.916984, 0.0842417, 0.389929, -2.53113, 40.7202, -1.39919)
+transform = Transform3D(-0.480169, -0.813045, 0.329234, 0.169479, 0.282271, 0.944246, -0.860648, 0.509196, 0.00225668, -21.2751, 40.7202, -59.856)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("4_jdda0")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.0173, 1.48025, -72.5729)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.5043, 1.53891, -73.4933)
 
 [node name="Enemy3" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("3_btv58")]
 transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, -12.961, 1, 82.517)
@@ -65,7 +65,7 @@ player = NodePath("../Player")
 patrol_node = NodePath("../patrol_pt_gd1")
 
 [node name="level_trigger" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_nkp0e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85593, 3.61451, 106.521)
+transform = Transform3D(0.999972, 0.00706049, -0.00233288, -0.00705671, 0.999974, 0.00162462, 0.00234429, -0.0016081, 0.999996, -6.85593, 3.61451, 106.521)
 player = NodePath("../Player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level_trigger"]
@@ -154,7 +154,7 @@ player = NodePath("../../Player")
 
 [node name="control_ui11" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2822, 1.5957, 2.46047)
-text = "orange means they're searching for oyu
+text = "orange means they're searching for you 
 "
 font_size = 16
 player = NodePath("../../Player")
@@ -166,8 +166,8 @@ font_size = 32
 player = NodePath("../../Player")
 
 [node name="control_ui8" parent="Controls" node_paths=PackedStringArray("player") instance=ExtResource("3_eybfr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1599, 1.05368, 13.4036)
-text = "Being faster meaning being louder
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1021, 1.08237, 13.4554)
+text = "Being faster means being louder
 "
 font_size = 16
 player = NodePath("../../Player")
