@@ -273,7 +273,7 @@ transform = Transform3D(0.196533, 0, -0.0530347, 0, 0.607816, 0, 0.0370784, 0, 0
 transform = Transform3D(-0.15354, 0.0853411, -0.107163, -3.72529e-09, 0.309706, 0.0504847, 0.182263, 0.0718918, -0.0902746, -2.52751, -2.54305, 32.9362)
 
 [node name="rock_wall7" parent="NavigationRegion3D/ob" instance=ExtResource("5_xhbuw")]
-transform = Transform3D(0.057072, 0, -0.256272, 0, 0.397231, 0, 0.235781, 0, 0.0620319, -15.8015, -3.78983, -32.2356)
+transform = Transform3D(0.057072, 0, -0.256272, 0, 0.397231, 0, 0.235781, 0, 0.0620319, -15.8015, -5.0032, -32.2356)
 
 [node name="rock_wall12" parent="NavigationRegion3D/ob" instance=ExtResource("5_xhbuw")]
 transform = Transform3D(0.0631781, 0, -0.577398, 0, 0.803547, 0, 0.344129, 0, 0.106004, -6.79526, -5.00652, 44.7804)

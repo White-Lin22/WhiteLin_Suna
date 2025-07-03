@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 var speed = 5
-var default_speed = 3
-var crouch_move_speed = 2
-var run_speed = 15
+var default_speed = 2
+var crouch_move_speed = 1
+var run_speed = 4
 var crouch_speed = 20
 var climb_speed = 2.0
 var vault_velocity = 5.0

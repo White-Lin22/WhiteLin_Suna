@@ -3,7 +3,7 @@ extends state
 class_name patrol
 
 var player : CharacterBody3D
-var speed = 200
+var speed = 100
 
 @export var search_state : state
 @export var chasing_state : state

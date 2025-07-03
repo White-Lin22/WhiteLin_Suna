@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl61yodyf3neh"]
+
+[ext_resource type="Script" uid="uid://114eotc72mab" path="res://scripts/level_trigger_2.gd" id="1_2nnxe"]
+
+[node name="level_trigger" type="Area3D"]
+script = ExtResource("1_2nnxe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
