@@ -14,6 +14,7 @@ var next_point = 0
 @export var hearing_label: Label3D
 @export var patrol_node: Node3D
 @export var hearing_bar_sprite : Sprite3D
+@export var footsteps_audio : AudioStreamPlayer3D
 
 
 @onready var nav_agent = $NavigationAgent3D
@@ -29,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	#if start_rotating:
 	#	searching(delta)
 	#enemy_sight()
+
 	
 func _process(delta: float) -> void:
 	state_label.look_at(Vector3(player.global_transform.origin.x, global_transform.origin.y ,player.global_transform.origin.z),Vector3(0,1,0))

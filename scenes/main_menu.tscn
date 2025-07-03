@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://v71cmi3v1ejm"]
+[gd_scene load_steps=6 format=3 uid="uid://v71cmi3v1ejm"]
 
-[ext_resource type="Script" uid="uid://derj7ef0882k1" path="res://scripts/main_menu.gd" id="1_mh86l"]
+[ext_resource type="Script" uid="uid://bu30xx75mf8k5" path="res://scripts/main_menu.gd" id="1_mh86l"]
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="1_ppbns"]
+[ext_resource type="Texture2D" uid="uid://cgosra44ss7re" path="res://スクリーンショット 2025-07-03 221458.png" id="2_bqqt6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wu84c"]
+texture = ExtResource("2_bqqt6")
+modulate_color = Color(0.138034, 0.138034, 0.138034, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_170g7"]
 bg_color = Color(0.0132447, 0.194713, 9.62615e-07, 1)
@@ -18,6 +23,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mh86l")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wu84c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -66,7 +80,8 @@ offset_bottom = 217.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_ppbns")
 theme_override_font_sizes/font_size = 64
-text = "[Game Name]"
+text = "Suna"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]

@@ -100,29 +100,5 @@ transform = Transform3D(0.978788, 0.0590917, -0.196167, 0.0923893, 0.727305, 0.6
 light_energy = 2.0
 shadow_enabled = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="shit_crosshair" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -11.5
-offset_right = 5.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "o
-"
-
 [node name="rock_wall" parent="." instance=ExtResource("3_564n3")]
 transform = Transform3D(0.312127, -0.000104963, 0.000345656, 0.000463672, 0.0706972, -0.000364542, -0.000278273, 6.66687e-05, 0.387108, 8.7815, 9.85186, 35.6923)

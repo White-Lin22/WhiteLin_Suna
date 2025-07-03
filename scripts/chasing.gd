@@ -11,7 +11,7 @@ class_name chasing
 @export var sight_area : Area3D
 
 
-var speed = 4
+var speed = 5
 var player : CharacterBody3D
 
 var eye_open

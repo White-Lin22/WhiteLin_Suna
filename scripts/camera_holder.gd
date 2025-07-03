@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_x(deg_to_rad(event.relative.y * -0.04))
+		rotate_x(deg_to_rad(event.relative.y * -0.08))
 		rotation.x = clamp(rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -134,6 +134,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("7_olymh")
 
 [node name="eye_closed" type="TextureRect" parent="CameraHolder/Camera3D/interact/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -150,6 +151,7 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_w3t14")
 
 [node name="TextureRect" type="TextureRect" parent="CameraHolder/Camera3D/interact/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,6 +194,9 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 shape = SubResource("SphereShape3D_pn40d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_by1q5")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

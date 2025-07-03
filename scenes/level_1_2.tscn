@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://chpdmm782gd7a"]
 
-[ext_resource type="Script" uid="uid://5a3djr0lo5r" path="res://level_1.gd" id="1_w5g5n"]
+[ext_resource type="Script" uid="uid://crmoxxgwhg88v" path="res://level_1.gd" id="1_w5g5n"]
 [ext_resource type="Texture2D" uid="uid://cg484jfxvg3cp" path="res://assets/hdri/kloppenheim_07_puresky_4k.exr" id="2_frpl0"]
 [ext_resource type="PackedScene" uid="uid://mkssftuhb8s0" path="res://scenes/player.tscn" id="3_mc5ma"]
 [ext_resource type="PackedScene" uid="uid://be6i21v2g8n06" path="res://scenes/enemy.tscn" id="4_cnkfb"]
@@ -23,7 +23,7 @@ sky_material = SubResource("PanoramaSkyMaterial_2npnj")
 background_mode = 2
 sky = SubResource("Sky_3qhm5")
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.04
+volumetric_fog_density = 0.03
 volumetric_fog_albedo = Color(0.614502, 0.249329, 3.85046e-07, 1)
 volumetric_fog_length = 100.0
 
@@ -51,12 +51,7 @@ transform = Transform3D(-0.635691, 0.579075, 0.510459, 0.616118, -0.0177908, 0.7
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_mc5ma")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.659, 11.1253, -68.6939)
-
-[node name="Enemy3" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_cnkfb")]
-transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 18.0235, 24.0528, -12.9843)
-player = NodePath("../Player")
-patrol_node = NodePath("../patrol_pt_gd1")
+transform = Transform3D(-0.296908, 0, -0.954906, 0, 1, 0, 0.954906, 0, -0.296908, 14.7332, 32.9233, 52.6103)
 
 [node name="Enemy7" parent="." node_paths=PackedStringArray("player", "patrol_node") groups=["enemy"] instance=ExtResource("4_cnkfb")]
 transform = Transform3D(-0.994654, 0, -0.103261, 0, 1, 0, 0.103261, 0, -0.994654, 91.5314, 7.99463, 130.256)
@@ -324,6 +319,9 @@ transform = Transform3D(0.732316, 0, 0, 0, 0.72252, 0, 0, 0, 1.98445, 13.8675, 1
 
 [node name="rock_wall9" parent="NavigationRegion3D/walls" instance=ExtResource("9_s1c0n")]
 transform = Transform3D(0.0565825, 0, -0.729954, 0, 3.59786, 0, 0.723957, 0, 0.0570512, 14.9799, -5.95081, 79.3977)
+
+[node name="rock_wall10" parent="NavigationRegion3D/walls" instance=ExtResource("9_s1c0n")]
+transform = Transform3D(0.0565825, 0, -0.729954, 0, 3.59786, 0, 0.723957, 0, 0.0570512, 19.8112, -5.95081, 22.4448)
 
 [node name="main_level" type="Node3D" parent="NavigationRegion3D/walls"]
 

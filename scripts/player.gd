@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var speed = 5
-var default_speed = 2
+var default_speed = 2.5
 var crouch_move_speed = 1
 var run_speed = 4
 var crouch_speed = 20
@@ -37,7 +37,7 @@ func _ready() -> void:
 	
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(event.relative.x * -0.04))
+		rotate_y(deg_to_rad(event.relative.x * -0.08))
 		
 	if event.is_action_pressed("fullscreen"):
 		var mode := DisplayServer.window_get_mode()

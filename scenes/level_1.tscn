@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://5iqgi83scyg5"]
 
-[ext_resource type="Script" uid="uid://5a3djr0lo5r" path="res://level_1.gd" id="1_wvks6"]
+[ext_resource type="Script" uid="uid://crmoxxgwhg88v" path="res://level_1.gd" id="1_wvks6"]
 [ext_resource type="Texture2D" uid="uid://cg484jfxvg3cp" path="res://assets/hdri/kloppenheim_07_puresky_4k.exr" id="2_ngul7"]
 [ext_resource type="PackedScene" uid="uid://mkssftuhb8s0" path="res://scenes/player.tscn" id="3_7j0rc"]
 [ext_resource type="PackedScene" uid="uid://be6i21v2g8n06" path="res://scenes/enemy.tscn" id="4_vm1xa"]
