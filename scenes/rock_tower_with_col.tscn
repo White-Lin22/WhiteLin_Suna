@@ -1,6 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh3e315r7wfvs"]
-
-[sub_resource type="Resource" id="Resource_kf1km"]
-metadata/__load_path__ = "res://assets/models/sand_tower_with_col/rock_tower_with_col.glb"
+[gd_scene format=3 uid="uid://bh3e315r7wfvs"]
 
 [node name="rock_tower_with_col"]
