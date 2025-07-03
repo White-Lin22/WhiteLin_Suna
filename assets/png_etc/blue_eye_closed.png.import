@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dscdmek5ni8ue"
-path="res://.godot/imported/orange_eye_closed.png-e02fd1dae8b649e5fbaa059e5774ee03.ctex"
+uid="uid://dyi5rvv6adhoj"
+path="res://.godot/imported/blue_eye_closed.png-af7b1214930f1d1fe15752bc43c7de2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://orange_eye_closed.png"
-dest_files=["res://.godot/imported/orange_eye_closed.png-e02fd1dae8b649e5fbaa059e5774ee03.ctex"]
+source_file="res://assets/png_etc/blue_eye_closed.png"
+dest_files=["res://.godot/imported/blue_eye_closed.png-af7b1214930f1d1fe15752bc43c7de2c.ctex"]
 
 [params]
 

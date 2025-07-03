@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://dw0yme6tjls18" path="res://scripts/interact.gd" id="3_ro5my"]
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="4_ymkhx"]
 [ext_resource type="FontFile" uid="uid://cwgntu2vlh2m4" path="res://assets/font/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="5_88vfk"]
-[ext_resource type="Texture2D" uid="uid://seb1ooi3d5i4" path="res://red_eye_closed.png" id="6_o8qaa"]
-[ext_resource type="Texture2D" uid="uid://dscdmek5ni8ue" path="res://orange_eye_closed.png" id="7_olymh"]
-[ext_resource type="Texture2D" uid="uid://dyi5rvv6adhoj" path="res://blue_eye_closed.png" id="8_w3t14"]
-[ext_resource type="Texture2D" uid="uid://ds6whohxvhhl" path="res://eiMxgKKin.png" id="9_eiqah"]
+[ext_resource type="Texture2D" uid="uid://seb1ooi3d5i4" path="res://assets/png_etc/red_eye_closed.png" id="6_o8qaa"]
+[ext_resource type="Texture2D" uid="uid://dscdmek5ni8ue" path="res://assets/png_etc/orange_eye_closed.png" id="7_olymh"]
+[ext_resource type="Texture2D" uid="uid://dyi5rvv6adhoj" path="res://assets/png_etc/blue_eye_closed.png" id="8_w3t14"]
+[ext_resource type="Texture2D" uid="uid://ds6whohxvhhl" path="res://assets/png_etc/eiMxgKKin.png" id="9_eiqah"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yvqei"]
 

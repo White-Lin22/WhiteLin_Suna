@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu30xx75mf8k5" path="res://scripts/main_menu.gd" id="1_mh86l"]
 [ext_resource type="FontFile" uid="uid://cjv8uwn4ctqhm" path="res://assets/font/Sixtyfour/static/Sixtyfour-Regular.ttf" id="1_ppbns"]
-[ext_resource type="Texture2D" uid="uid://cgosra44ss7re" path="res://スクリーンショット 2025-07-03 221458.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://cgosra44ss7re" path="res://assets/png_etc/スクリーンショット 2025-07-03 221458.png" id="2_bqqt6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wu84c"]
 texture = ExtResource("2_bqqt6")

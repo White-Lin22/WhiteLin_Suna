@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbi0odj1ejb5m"
-path="res://.godot/imported/eye-open-pngrepo-com.png-80046541f329156c1a54c19b61b43e63.ctex"
+path="res://.godot/imported/eye-open-pngrepo-com.png-54179926aa969ca6d0e2def1cff0e829.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://eye-open-pngrepo-com.png"
-dest_files=["res://.godot/imported/eye-open-pngrepo-com.png-80046541f329156c1a54c19b61b43e63.ctex"]
+source_file="res://assets/png_etc/eye-open-pngrepo-com.png"
+dest_files=["res://.godot/imported/eye-open-pngrepo-com.png-54179926aa969ca6d0e2def1cff0e829.ctex"]
 
 [params]
 
