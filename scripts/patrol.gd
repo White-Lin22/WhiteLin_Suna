@@ -40,6 +40,7 @@ func update(delta):
 	eye_closed = player.get_node("CameraHolder/Camera3D/interact/Control/eye_closed")
 	orange_eye_open = player.get_node("CameraHolder/Camera3D/interact/Control/orang_eye_open")
 	
+	# always records the amount of time spent within the hearing area 3d then leads to the search state
 	hearing_meter()
 	if hearing_status >= 100:
 		go_to_search_state()
@@ -64,6 +65,7 @@ func go_to_chase_state():
 	orange_eye_open.visible = false
 	next_state = chasing_state
 
+# when the player's hearing area3d overlaps with the enemys the bar goes up when inside and goes down when not
 func hearing_meter():
 	if hearing_on == true:
 		hearing_status += 1
@@ -74,7 +76,7 @@ func hearing_meter():
 			hearing_status -= 1
 			await get_tree().create_timer(1).timeout
 	
-
+# sets the target position to the appended list of markers 
 func patrolling(delta):
 	var dir
 	nav_agent.target_position =  enemy.all_points[enemy.next_point]
@@ -113,7 +115,7 @@ func _on_navigation_agent_3d_target_reached() -> void:
 		enemy.next_point = enemy.all_points[-1]
 		enemy.next_point = 0
 
-
+# when the timer goes to 0 it will record if the player is within the area3d, project a raycast and if there's nothing between it and the player then = chase
 func _on_sight_timer_timeout() -> void:
 	var overlaps = sight_area.get_overlapping_bodies()
 	if overlaps.size() > 0:

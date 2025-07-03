@@ -3,6 +3,7 @@ extends state
 
 class_name chasing
 
+# variables from the same scene
 @export var idle_state : state
 @export var searching_state : state
 @export var state_label : Label3D
@@ -14,12 +15,13 @@ class_name chasing
 var speed = 5
 var player : CharacterBody3D
 
+
 var eye_open
 var eye_closed
 var orange_eye_open
 
+# when the scene is entered, it updates the previous variables
 func on_enter():
-
 	player = get_tree().get_first_node_in_group("Player")
 	eye_open = player.get_node("CameraHolder/Camera3D/interact/Control/eye_open")
 	eye_closed = player.get_node("CameraHolder/Camera3D/interact/Control/eye_closed")
@@ -27,6 +29,7 @@ func on_enter():
 	print("entered chasing")
 	state_label.text ="[chasing]"
 	
+
 func physics_update(delta):
 		chase()
 
@@ -40,6 +43,7 @@ func chase():
 		if sight_raycast.is_colliding():
 			var collider = sight_raycast.get_collider()
 			if collider == player:
+				# uses the navigation map to calculate a path between itself and the player 
 				var next_location = nav_agent.get_next_path_position()
 				var current_location = enemy.global_transform.origin
 				var new_velocity = (next_location - current_location).normalized() * speed
@@ -54,16 +58,6 @@ func chase():
 		go_to_searching_state()
 
 
-
-
-
-#func handle_input(_input: InputEvent):
-#	if(_input.is_action_pressed("idle_test")):
-#		go_to_idle_state()
-		
-func go_to_idle_state():
-	next_state = idle_state
-	
 func go_to_searching_state():
 	eye_closed.visible = false
 	eye_open.visible = false

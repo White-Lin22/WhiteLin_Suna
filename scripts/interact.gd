@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 			interact_label.visible = true
 		else:
 			interact_label.visible = false
+		# this makes it so that after interacting, the prompt goes away
 		if Input.is_action_just_pressed("interact") and interacting == false:
 			player.in_conversation_rn()
 			interact_visible = false
@@ -36,6 +37,7 @@ func _process(delta: float) -> void:
 	else:
 		interact_label.visible = false
 		
+# reveals the text after interacting
 func collection_msg_timer():
 	collection_msg.visible = true
 	await get_tree().create_timer(2).timeout

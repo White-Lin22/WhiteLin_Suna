@@ -3,6 +3,7 @@ class_name state extends Node
 var enemy: CharacterBody3D
 var next_state : state
 
+# functions that refer to built in functions
 func on_enter():
 	pass
 	

@@ -31,14 +31,15 @@ var win_con = false
 @onready var loudstate = $Area3D/loudState
 @onready var quietstate = $Area3D/quietState
 
-
+# locks mouse
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(event.relative.x * -0.08))
-		
+	
+	# fullscreen f11
 	if event.is_action_pressed("fullscreen"):
 		var mode := DisplayServer.window_get_mode()
 		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
@@ -50,6 +51,7 @@ func _input(event):
 	if event.is_action_pressed("testing_button2"):
 		not_in_conversation_rn()
 	
+	# q to quit
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 func _physics_process(delta: float) -> void:
@@ -62,6 +64,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
+	# both sets the speed for the different states of player and sets the area3d for hearing along with them
 	if Input.is_action_pressed("sprint"):
 		speed = run_speed
 		loudstate.disabled = false
@@ -84,6 +87,7 @@ func _physics_process(delta: float) -> void:
 		
 	char_col_shape.shape.height = clamp(char_col_shape.shape.height, crouch_height, default_height)	
 	
+	# if player is close enough to climable wall then it will start climbing and will give a boost at the top when the top raycast isn't colliding with the wall anymore
 	if wallcheck.is_colliding():
 		if stillonwall.is_colliding():
 			if Input.is_action_pressed("climb"):
@@ -106,7 +110,6 @@ func _physics_process(delta: float) -> void:
 		gravity_on = true
 	
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	

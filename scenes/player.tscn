@@ -134,7 +134,6 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("7_olymh")
 
 [node name="eye_closed" type="TextureRect" parent="CameraHolder/Camera3D/interact/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -151,7 +150,6 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_w3t14")
 
 [node name="TextureRect" type="TextureRect" parent="CameraHolder/Camera3D/interact/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

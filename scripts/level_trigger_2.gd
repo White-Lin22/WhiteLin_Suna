@@ -2,6 +2,7 @@ extends Area3D
 
 @export var player: CharacterBody3D
 
+# loads the next scene when the player fills the condition
 func _on_body_entered(body: Node3D) -> void:
 	print(player)
 	print(player.win_con)

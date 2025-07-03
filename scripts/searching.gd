@@ -49,12 +49,6 @@ func spinning(delta):
 		go_to_patrol_state()
 		
 		
-		
-#func handle_input(_input: InputEvent):
-#	if(_input.is_action_pressed("chasing")):
-#		print("inputing chasing")
-#		go_to_chase_state()
-		
 func go_to_chase_state():
 	eye_closed.visible = false
 	eye_open.visible = true

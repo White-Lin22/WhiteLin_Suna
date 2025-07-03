@@ -6,7 +6,7 @@ class_name state_machine extends Node
 
 var states : Array[state]
 
-
+# for each state under the state machine append to a list and asign it to the enemy
 func _ready():
 	for child in get_children():
 		if(child is state):
@@ -19,6 +19,7 @@ func _ready():
 		else:
 			push_warning("Child " + child.name + " is not a State for CharacterStateMachine")
 
+# when the state's scene is the current one then it will only play the physics process and similiar function on that single state
 func _physics_process(delta):
 	if(current_state.next_state != null):
 		switch_states(current_state.next_state)
